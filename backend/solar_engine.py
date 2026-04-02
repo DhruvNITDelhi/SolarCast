@@ -11,7 +11,8 @@ from typing import Dict, Any, Tuple, Optional
 from timezonefinder import TimezoneFinder
 import pvlib
 from pvlib.location import Location
-from pvlib.irradiance import get_total_irradiance, get_extra_radiation
+from pvlib.irradiance import get_total_irradiance, get_extra_radiation, clearsky_index
+from pvlib.clearsky import ineichen
 
 
 # ─── Constants ────────────────────────────────────────────────────────────────
@@ -36,42 +37,54 @@ def get_timezone(lat: float, lon: float) -> str:
 
 def fetch_irradiance_forecast(lat: float, lon: float, timezone: str) -> pd.DataFrame:
     """
-    Fetch hourly irradiance and weather forecast from Open-Meteo.
+    Fetch 15-minute irradiance and weather forecast from Open-Meteo.
     Returns DataFrame with columns: ghi, dni, dhi, cloud_cover, temperature
     """
     params = {
         "latitude": lat,
         "longitude": lon,
-        "hourly": ",".join([
+        "minutely_15": ",".join([
             "shortwave_radiation",         # GHI (W/m²)
             "direct_normal_irradiance",    # DNI (W/m²)
             "diffuse_radiation",           # DHI (W/m²)
+        ]),
+        "hourly": ",".join([
             "cloudcover",                  # Cloud cover (%)
             "temperature_2m",             # Temperature (°C)
         ]),
         "timezone": timezone,
-        "forecast_days": 2,  # Get 2 days to ensure full 24h coverage
+        "forecast_days": 2,
+        "past_days": 1,
     }
 
     response = requests.get(OPEN_METEO_BASE, params=params, timeout=30)
     response.raise_for_status()
     data = response.json()
 
-    hourly = data["hourly"]
-    times = pd.to_datetime(hourly["time"])
+    # ── Process 15-min data (Radiation) ──
+    m15 = data["minutely_15"]
+    df_15 = pd.DataFrame({
+        "time": pd.to_datetime(m15["time"]),
+        "ghi": m15["shortwave_radiation"],
+        "dni": m15["direct_normal_irradiance"],
+        "dhi": m15["diffuse_radiation"],
+    }).set_index("time")
 
-    df = pd.DataFrame({
-        "time": times,
-        "ghi": hourly["shortwave_radiation"],
-        "dni": hourly["direct_normal_irradiance"],
-        "dhi": hourly["diffuse_radiation"],
-        "cloud_cover": hourly["cloudcover"],
-        "temperature": hourly["temperature_2m"],
-    })
+    # ── Process Hourly data (Cloud/Temp) and upsample to 15-min ──
+    hr = data["hourly"]
+    df_hr = pd.DataFrame({
+        "time": pd.to_datetime(hr["time"]),
+        "cloud_cover": hr["cloudcover"],
+        "temperature": hr["temperature_2m"],
+    }).set_index("time")
 
-    df = df.set_index("time")
+    # Resample hourly to 15-min and interpolate
+    df_hr = df_hr.resample("15min").interpolate(method="linear")
 
-    # Localize to the detected timezone
+    # Join both
+    df = df_15.join(df_hr, how="inner")
+
+    # Localize to detected timezone
     df.index = df.index.tz_localize(timezone)
 
     return df
@@ -137,13 +150,14 @@ def compute_hourly_generation(
     eff = efficiency / 100.0
     loss_factor = 1.0 - (losses / 100.0)
 
-    # STC irradiance is 1000 W/m², so normalize
-    # Power = (POA / 1000) * system_size * efficiency_factor * loss_factor
+    # Power (kW) = (POA / 1000) * system_size * efficiency_factor * loss_factor
+    # Each row is 15 mins (0.25 hours), so kWh = Power * 0.25
     df["kwh"] = (
         (df["poa_global"] / 1000.0)
         * system_size_kw
         * eff
         * loss_factor
+        * 0.25 # Convert kW to 15-min kWh
     )
 
     # Zero out nighttime (solar zenith >= 90 means sun is below horizon)
@@ -229,33 +243,74 @@ def generate_forecast(
     # ── Fetch irradiance data ──
     df = fetch_irradiance_forecast(lat, lon, timezone)
 
-    # ── Filter to next 24 hours from current time ──
-    now = pd.Timestamp.now(tz=timezone)
-    # Start from the next full hour
-    start = now.ceil("h")
-    end = start + timedelta(hours=24)
-    df = df.loc[start:end].head(24)
-
-    if df.empty:
-        raise ValueError("No forecast data available for the requested location and time range.")
-
-    # ── Compute POA irradiance ──
+    # ── Compute actual POA and generation first ──
     df = compute_poa_irradiance(df, lat, lon, tilt, azimuth)
-
-    # ── Compute generation ──
     df = compute_hourly_generation(df, system_size_kw, efficiency, losses)
 
-    # ── Confidence ──
-    # Only consider daylight hours for confidence
-    daylight = df[df["solar_zenith"] < 90]
+    # ── Clear Sky Potential (Diagnostic) ──
+    # We compute what the generation WOULD have been if ghi/dni were clear sky
+    location = Location(latitude=lat, longitude=lon)
+    clearsky = location.get_clearsky(df.index) # Ineichen/Solis clear sky
+    
+    # Transpose clear sky to POA
+    dni_extra = get_extra_radiation(df.index)
+    poa_clear = get_total_irradiance(
+        surface_tilt=tilt,
+        surface_azimuth=azimuth,
+        dni=clearsky["dni"],
+        ghi=clearsky["ghi"],
+        dhi=clearsky["dhi"],
+        dni_extra=dni_extra,
+        solar_zenith=df["solar_zenith"],
+        solar_azimuth=df["solar_azimuth"],
+        model="haydavies",
+    )
+    
+    eff = efficiency / 100.0
+    loss_factor = 1.0 - (losses / 100.0)
+    df["kwh_potential"] = (
+        (poa_clear["poa_global"].clip(lower=0) / 1000.0)
+        * system_size_kw
+        * eff
+        * loss_factor
+        * 0.25
+    )
+    df.loc[df["solar_zenith"] >= 90, "kwh_potential"] = 0.0
+
+    now = pd.Timestamp.now(tz=timezone)
+
+    # ── Extract Yesterday's Diagnostics (Actual vs Potential) ──
+    yesterday_start = now.normalize() - pd.Timedelta(days=1)
+    yesterday_end = now.normalize() - pd.Timedelta(minutes=15)
+    yesterday_df = df.loc[yesterday_start:yesterday_end]
+    
+    yesterday_actual = round(yesterday_df["kwh"].sum(), 2) if not yesterday_df.empty else 0.0
+    yesterday_potential = round(yesterday_df["kwh_potential"].sum(), 2) if not yesterday_df.empty else 0.0
+    
+    loss_pct = 0.0
+    if yesterday_potential > 0:
+        loss_pct = round(((yesterday_potential - yesterday_actual) / yesterday_potential) * 100, 1)
+
+    # ── Filter to next 24 hours from current time for future forecast ──
+    start = now.ceil("15min")
+    end = start + pd.Timedelta(hours=24)
+    df_f = df.loc[start:end].head(96)
+
+    # ── Confidence & Maintenance Alerts ──
+    daylight = df_f[df_f["solar_zenith"] < 90]
+    avg_cloud = daylight["cloud_cover"].mean() if not daylight.empty else 100
     confidence = compute_confidence(daylight["cloud_cover"]) if not daylight.empty else "Low"
+
+    maintenance_alert = None
+    if avg_cloud < 15:
+        maintenance_alert = "Perfect clear skies! High ROI window to wash your solar panels today."
 
     # ── Sunrise / Sunset ──
     sunrise, sunset = get_sunrise_sunset(lat, lon, timezone)
 
     # ── Build response ──
     hourly = []
-    for ts, row in df.iterrows():
+    for ts, row in df_f.iterrows():
         hourly.append({
             "hour": ts.isoformat(),
             "kwh": round(row["kwh"], 3),
@@ -275,6 +330,19 @@ def generate_forecast(
     else:
         peak_hour = ""
         peak_kwh = 0.0
+    
+    # ── Smart Window (Best 3-hour usage) ──
+    # 3 hours = 12 steps of 15 mins
+    best_3h_sum = -1.0
+    smart_start = None
+    smart_end = None
+    
+    for i in range(len(hourly) - 11):
+        three_hour_sum = sum(h["kwh"] for h in hourly[i:i+12])
+        if three_hour_sum > best_3h_sum:
+            best_3h_sum = three_hour_sum
+            smart_start = hourly[i]["hour"]
+            smart_end = (pd.Timestamp(hourly[i+11]["hour"]) + pd.Timedelta(minutes=15)).isoformat()
 
     return {
         "hourly": hourly,
@@ -296,4 +364,10 @@ def generate_forecast(
         },
         "sunrise": sunrise,
         "sunset": sunset,
+        "smart_window_start": smart_start,
+        "smart_window_end": smart_end,
+        "yesterday_kwh": yesterday_actual,
+        "yesterday_potential": yesterday_potential,
+        "yesterday_loss_percent": loss_pct,
+        "maintenance_alert": maintenance_alert,
     }

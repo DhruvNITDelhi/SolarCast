@@ -15,9 +15,9 @@ class ForecastRequest(BaseModel):
     efficiency: float = Field(18.0, ge=5, le=30, description="Panel efficiency percentage")
 
 
-class HourlyData(BaseModel):
-    """A single hour of forecast data."""
-    hour: str = Field(..., description="ISO 8601 hour timestamp")
+class TimeSeriesData(BaseModel):
+    """A single 15-minute time step of forecast data."""
+    hour: str = Field(..., description="ISO 8601 timestamp")
     kwh: float = Field(..., description="Estimated generation in kWh")
     irradiance: float = Field(..., description="Plane-of-array irradiance in W/m²")
     ghi: float = Field(..., description="Global Horizontal Irradiance in W/m²")
@@ -43,7 +43,7 @@ class LocationInfo(BaseModel):
 
 class ForecastResponse(BaseModel):
     """Response body for the /forecast endpoint."""
-    hourly: List[HourlyData]
+    hourly: List[TimeSeriesData]
     total_kwh: float
     peak_hour: str
     peak_kwh: float
@@ -52,3 +52,9 @@ class ForecastResponse(BaseModel):
     system_params: SystemParams
     sunrise: Optional[str] = None
     sunset: Optional[str] = None
+    smart_window_start: Optional[str] = None
+    smart_window_end: Optional[str] = None
+    yesterday_kwh: Optional[float] = None
+    yesterday_potential: Optional[float] = None
+    yesterday_loss_percent: Optional[float] = None
+    maintenance_alert: Optional[str] = None
