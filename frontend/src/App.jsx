@@ -1,12 +1,13 @@
 import { useState, useCallback } from 'react';
-import { Sun, Loader2, AlertTriangle, BarChart3, Zap } from 'lucide-react';
+import { Sun, Loader2, AlertTriangle, BarChart3, Zap, Download } from 'lucide-react';
 import LocationSearch from './components/LocationSearch';
 import SystemParams from './components/SystemParams';
 import ForecastChart from './components/ForecastChart';
 import SummaryPanel from './components/SummaryPanel';
 import SunArc from './components/SunArc';
+import Leaderboard from './components/Leaderboard';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE = 'http://localhost:8001';
 
 function App() {
   /* ── State ── */
@@ -65,6 +66,28 @@ function App() {
     }
     setLoading(false);
   }, [lat, lon, params]);
+
+  const downloadCSV = useCallback(() => {
+    if (!forecast) return;
+    const headers = ['Timestamp (15min)', 'Generation (kWh)', 'POA Irradiance (W/m2)', 'GHI (W/m2)', 'Cloud Cover (%)', 'Temp (C)'];
+    const rows = forecast.hourly.map(h => [
+      h.hour,
+      h.kwh,
+      h.irradiance,
+      h.ghi,
+      h.cloud_cover,
+      h.temperature
+    ]);
+    const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `solarcast_15min_forecast_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, [forecast]);
 
   /* ── Render ── */
   return (
@@ -172,6 +195,11 @@ function App() {
                   </div>
                 </div>
               )}
+              
+              {/* Solar Leaderboard */}
+              <div className="mt-2">
+                <Leaderboard />
+              </div>
             </div>
           </div>
         </div>
@@ -223,6 +251,13 @@ function App() {
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-4 rounded-full bg-[var(--solar-gold)]"></div>
                 <h2 className="text-sm font-semibold text-[var(--text-primary)]">Hourly Breakdown</h2>
+                <button 
+                  onClick={downloadCSV}
+                  className="ml-auto flex items-center gap-1.5 px-3 py-1.5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-sm text-[10px] text-[var(--text-secondary)] hover:text-[var(--solar-gold)] hover:border-[var(--solar-gold)] transition-all"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Download CSV
+                </button>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-xs min-w-[550px]">
@@ -236,9 +271,11 @@ function App() {
                     </tr>
                   </thead>
                   <tbody>
-                    {forecast.hourly.map((h, i) => {
-                      const dt = new Date(h.hour);
-                      const timeStr = dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+                    {forecast.hourly
+                      .filter(h => new Date(h.hour).getMinutes() === 0)
+                      .map((h, i) => {
+                        const dt = new Date(h.hour);
+                        const timeStr = dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
                       const isPeak = h.hour === forecast.peak_hour;
                       return (
                         <tr

@@ -20,7 +20,7 @@ function CustomTooltip({ active, payload, label }) {
       minWidth: '160px',
     }}>
       <p style={{ color: '#e8edf5', fontWeight: 600, fontSize: '13px', marginBottom: '8px', fontFamily: 'JetBrains Mono, monospace' }}>
-        {d.displayHour}
+        {d.displayTime}
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
@@ -60,8 +60,8 @@ export default function ForecastChart({ data, peakHour }) {
       const dt = new Date(d.hour);
       return {
         ...d,
-        displayHour: dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        shortHour: dt.toLocaleTimeString('en-IN', { hour: '2-digit', hour12: true }),
+        displayTime: dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true }),
+        tickLabel: dt.getMinutes() === 0 ? dt.toLocaleTimeString('en-IN', { hour: '2-digit', hour12: true }) : '',
         isPeak: d.hour === peakHour,
       };
     });
@@ -100,11 +100,21 @@ export default function ForecastChart({ data, peakHour }) {
           />
 
           <XAxis
-            dataKey="shortHour"
+            dataKey="displayTime"
             axisLine={{ stroke: '#1e2d45' }}
             tickLine={false}
-            tick={{ fill: '#5a6e8a', fontSize: 10, fontFamily: 'JetBrains Mono, monospace' }}
-            interval={2}
+            tick={({ x, y, payload }) => {
+              const item = chartData.find(d => d.displayTime === payload.value);
+              if (item && item.tickLabel) {
+                 return (
+                   <text x={x} y={y + 12} fill="#5a6e8a" fontSize={10} fontFamily="JetBrains Mono, monospace" textAnchor="middle">
+                     {item.tickLabel}
+                   </text>
+                 );
+              }
+              return null;
+            }}
+            interval={0}
           />
 
           <YAxis
@@ -161,14 +171,13 @@ export default function ForecastChart({ data, peakHour }) {
           {peakData && peakData.kwh > 0 && (
             <ReferenceDot
               yAxisId="kwh"
-              x={peakData.shortHour}
+              x={peakData.displayTime}
               y={peakData.kwh}
               r={6}
               fill="#f59e0b"
               stroke="#060b18"
               strokeWidth={3}
-            >
-            </ReferenceDot>
+            />
           )}
         </ComposedChart>
       </ResponsiveContainer>

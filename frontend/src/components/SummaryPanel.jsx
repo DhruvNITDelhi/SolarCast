@@ -1,4 +1,4 @@
-import { Sun, Clock, TrendingUp, Gauge, ArrowUp, Thermometer, Cloud, SunDim } from 'lucide-react';
+import { Sun, Clock, TrendingUp, Gauge, ArrowUp, Thermometer, Cloud, SunDim, Zap, CheckCircle2, Sparkles } from 'lucide-react';
 
 function ConfidenceBadge({ level }) {
   const config = {
@@ -125,6 +125,44 @@ export default function SummaryPanel({ forecast }) {
         ))}
       </div>
 
+      {/* Weather Loss Monitor (Diagnostic) */}
+      {forecast.yesterday_kwh !== undefined && (
+        <div className="p-3 bg-[var(--bg-card)] border border-[rgba(99,179,237,0.2)] rounded-sm mb-3">
+          <div className="flex items-center gap-2 mb-2 pb-2 border-b border-[var(--border-subtle)]">
+            <CheckCircle2 className="w-4 h-4 text-blue-400" />
+            <p className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Yesterday's Health Check</p>
+          </div>
+          
+          <div className="space-y-2">
+            <div className="flex justify-between items-baseline">
+              <span className="text-[11px] text-[var(--text-muted)]">Weather-Driven Loss</span>
+              <span className="text-sm font-mono font-bold text-[var(--solar-orange)]">-{forecast.yesterday_loss_percent}%</span>
+            </div>
+            
+            <div className="relative h-1.5 w-full bg-[var(--bg-secondary)] rounded-full overflow-hidden">
+               <div 
+                 className="absolute top-0 left-0 h-full bg-blue-400 transition-all duration-1000" 
+                 style={{ width: `${100 - (forecast.yesterday_loss_percent || 0)}%` }}
+               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 mt-2 pt-1">
+              <div>
+                <p className="text-[9px] text-[var(--text-muted)] uppercase tracking-tighter">Realized</p>
+                <p className="text-xs font-mono font-bold text-[var(--text-primary)]">{forecast.yesterday_kwh} <span className="text-[10px] font-normal">kWh</span></p>
+              </div>
+              <div className="text-right">
+                <p className="text-[9px] text-[var(--text-muted)] uppercase tracking-tighter">Clear-Sky Max</p>
+                <p className="text-xs font-mono font-bold text-[var(--text-muted)]">{forecast.yesterday_potential} <span className="text-[10px] font-normal">kWh</span></p>
+              </div>
+            </div>
+          </div>
+          <p className="text-[9px] text-[var(--text-muted)] mt-2 italic leading-tight">
+            * Compare 'Realized' with your inverter's display to check for dirt/shading.
+          </p>
+        </div>
+      )}
+
       {/* Sunrise / Sunset */}
       {(forecast.sunrise || forecast.sunset) && (
         <div className="flex items-center gap-4 p-3 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
@@ -146,6 +184,41 @@ export default function SummaryPanel({ forecast }) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Smart Usage Advice */}
+      {forecast.smart_window_start && forecast.smart_window_end && (
+        <div className="p-3 bg-gradient-to-br from-[rgba(245,158,11,0.1)] to-[var(--bg-card)] border border-[rgba(245,158,11,0.3)] rounded-sm">
+          <div className="flex items-center gap-2 mb-2">
+            <Zap className="w-4 h-4 text-[var(--solar-gold)]" />
+            <p className="text-[10px] text-[var(--solar-gold)] font-bold uppercase tracking-wider">Smart Usage Window</p>
+          </div>
+          <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-2">
+            Best time to run heavy appliances (washing machine, pumps, AC) for maximum solar self-consumption:
+          </p>
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-1 bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.2)] rounded text-xs font-mono text-[var(--solar-amber)]">
+              {new Date(forecast.smart_window_start).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })}
+            </span>
+            <span className="text-[var(--text-muted)] text-xs">—</span>
+            <span className="px-2 py-1 bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.2)] rounded text-xs font-mono text-[var(--solar-amber)]">
+              {new Date(forecast.smart_window_end).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Maintenance Alerts */}
+      {forecast.maintenance_alert && (
+        <div className="p-3 my-3 bg-gradient-to-br from-[rgba(59,130,246,0.1)] to-[var(--bg-card)] border border-[rgba(59,130,246,0.3)] rounded-sm">
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles className="w-4 h-4 text-blue-400" />
+            <p className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Maintenance Insight</p>
+          </div>
+          <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+            {forecast.maintenance_alert}
+          </p>
         </div>
       )}
 
