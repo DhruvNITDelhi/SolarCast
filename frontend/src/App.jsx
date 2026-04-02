@@ -92,7 +92,7 @@ function App() {
       </header>
 
       {/* ─── Main Content ─── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <main className="max-w-7xl mx-auto px-2 sm:px-6 py-4 sm:py-6">
         {/* Sun arc (decorative, shows once forecast exists) */}
         {forecast && (
           <div className="mb-4 animate-fade-in">
@@ -101,7 +101,7 @@ function App() {
         )}
 
         {/* Top section: Location + Controls */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 mb-4 sm:mb-6">
           {/* Location Search */}
           <div className="lg:col-span-5 p-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
             <div className="flex items-center gap-2 mb-3">
@@ -186,7 +186,7 @@ function App() {
 
         {/* Loading skeleton */}
         {loading && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 mb-4 sm:mb-6">
             <div className="lg:col-span-8 p-6 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
               <div className="h-[340px] loading-shimmer rounded-sm"></div>
             </div>
@@ -200,9 +200,9 @@ function App() {
 
         {/* Results */}
         {forecast && !loading && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 animate-fade-in">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 animate-fade-in">
             {/* Chart */}
-            <div className="lg:col-span-8 p-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
+            <div className="lg:col-span-8 p-3 sm:p-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-4 rounded-full bg-[var(--solar-gold)]"></div>
                 <h2 className="text-sm font-semibold text-[var(--text-primary)]">Hourly Generation Forecast</h2>
@@ -219,13 +219,13 @@ function App() {
             </div>
 
             {/* Hourly data table */}
-            <div className="lg:col-span-12 p-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
+            <div className="lg:col-span-12 p-3 sm:p-4 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1 h-4 rounded-full bg-[var(--solar-gold)]"></div>
                 <h2 className="text-sm font-semibold text-[var(--text-primary)]">Hourly Breakdown</h2>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-xs">
+                <table className="w-full text-xs min-w-[550px]">
                   <thead>
                     <tr className="border-b border-[var(--border-primary)]">
                       {['Hour', 'Generation', 'POA Irradiance', 'GHI', 'Cloud', 'Temp'].map(h => (
