@@ -34,6 +34,14 @@ app.add_middleware(
 
 # ─── Routes ──────────────────────────────────────────────────────────────────
 
+@app.get("/")
+async def root():
+    return {
+        "message": "SolarCast API is running!",
+        "docs_url": "/docs",
+        "health_check": "/health"
+    }
+
 @app.get("/health")
 async def health():
     return {"status": "ok", "service": "solarcast"}

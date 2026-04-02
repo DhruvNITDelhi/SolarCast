@@ -5,7 +5,7 @@ export default function SystemParams({ params, onChange, lat }) {
   const [advanced, setAdvanced] = useState(false);
 
   const update = (key, value) => {
-    onChange({ ...params, [key]: value });
+    onChange(prev => ({ ...prev, [key]: value }));
   };
 
   const defaultTilt = lat ? Math.abs(lat).toFixed(1) : '20.0';
