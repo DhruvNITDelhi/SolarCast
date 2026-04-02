@@ -1,6 +1,6 @@
 # SolarCast 🌤️⚡
 
-A production-grade solar energy forecasting web application that predicts **hourly solar energy generation (kWh) for the next 24 hours** based on user location and system parameters.
+A solar energy forecasting web application that predicts **hourly solar energy generation (kWh) for the next 24 hours** based on user location and system parameters.
 
 SolarCast uses real weather and irradiance forecast data combined with physics-based solar modeling to provide highly accurate, actionable insights for solar plant owners, operators, and enthusiasts.
 
@@ -8,7 +8,7 @@ SolarCast uses real weather and irradiance forecast data combined with physics-b
 
 ## 🎯 Product Overview
 
-SolarCast is designed with a clean, reliable, and product-level interface. It takes crucial solar system parameters and geographical location to compute the expected power output. 
+SolarCast is designed with a clean, reliable interface. It takes crucial solar system parameters and geographical location to compute the expected power output. 
 
 ### Key Features
 *   **Real-time Forecasting:** 24-hour generation forecast using live data.
