@@ -1,0 +1,8 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pvlib==0.11.1
+requests==2.32.0
+pandas==2.2.0
+numpy==1.26.0
+python-dateutil==2.9.0
+timezonefinder==6.5.0
