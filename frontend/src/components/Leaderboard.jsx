@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Trophy, Sun, Loader2 } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
 const STATE_REPRESENTATIVES = [
   { name: 'Gujarat', city: 'Gandhinagar', lat: 23.2156, lon: 72.6369 },
