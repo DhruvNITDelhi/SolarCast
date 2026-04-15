@@ -87,11 +87,23 @@ export default function SummaryPanel({ forecast }) {
   return (
     <div className="space-y-3">
       {/* Confidence */}
-      <div className="flex items-center justify-between p-3 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
-        <div>
-          <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Forecast Confidence</span>
+      <div className="p-3 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Forecast Confidence</span>
+          </div>
+          <div className="flex items-center gap-2">
+            {forecast.confidence_score !== undefined && forecast.confidence_score !== null && (
+              <span className="text-xs font-mono text-[var(--text-secondary)]">{forecast.confidence_score}/100</span>
+            )}
+            <ConfidenceBadge level={forecast.confidence} />
+          </div>
         </div>
-        <ConfidenceBadge level={forecast.confidence} />
+        {forecast.confidence_reason && (
+          <p className="mt-2 text-[11px] text-[var(--text-secondary)] leading-relaxed">
+            {forecast.confidence_reason}
+          </p>
+        )}
       </div>
 
       {/* Stats grid */}

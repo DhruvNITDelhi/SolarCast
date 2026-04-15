@@ -48,6 +48,8 @@ class ForecastResponse(BaseModel):
     peak_hour: str
     peak_kwh: float
     confidence: str  # "High", "Medium", "Low"
+    confidence_score: Optional[int] = None
+    confidence_reason: Optional[str] = None
     location_info: LocationInfo
     system_params: SystemParams
     sunrise: Optional[str] = None

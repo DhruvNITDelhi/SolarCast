@@ -6,13 +6,25 @@ Hourly solar energy generation forecast API.
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from cache import TTLCache, build_forecast_cache_key
 from models import ForecastRequest, ForecastResponse
+from settings import (
+    get_cors_origin_regex,
+    get_cors_origins,
+    get_forecast_cache_max_entries,
+    get_forecast_cache_ttl_seconds,
+)
 from solar_engine import generate_forecast
 
 import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("solarcast")
+
+forecast_cache = TTLCache(
+    ttl_seconds=get_forecast_cache_ttl_seconds(),
+    max_entries=get_forecast_cache_max_entries(),
+)
 
 
 # ─── App ──────────────────────────────────────────────────────────────────────
@@ -25,7 +37,8 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=get_cors_origins(),
+    allow_origin_regex=get_cors_origin_regex(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -56,6 +69,22 @@ async def forecast(req: ForecastRequest):
     for physics-based solar position and power calculations.
     """
     try:
+        cache_key = build_forecast_cache_key(
+            lat=req.lat,
+            lon=req.lon,
+            system_size_kw=req.system_size_kw,
+            tilt=req.tilt,
+            azimuth=req.azimuth,
+            losses=req.losses,
+            efficiency=req.efficiency,
+        )
+        cached_result = forecast_cache.get(cache_key)
+        if cached_result is not None:
+            logger.info(
+                f"Forecast cache hit: lat={req.lat}, lon={req.lon}, size={req.system_size_kw}kW"
+            )
+            return cached_result
+
         logger.info(
             f"Forecast request: lat={req.lat}, lon={req.lon}, "
             f"size={req.system_size_kw}kW, tilt={req.tilt}, azimuth={req.azimuth}"
@@ -76,6 +105,7 @@ async def forecast(req: ForecastRequest):
             f"peak={result['peak_hour']}, confidence={result['confidence']}"
         )
 
+        forecast_cache.set(cache_key, result)
         return result
 
     except ValueError as e:
