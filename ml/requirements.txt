@@ -1,0 +1,7 @@
+pandas>=2.2,<3
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+requests>=2.32,<3
+pyarrow>=16,<20
+matplotlib>=3.9,<4
+kaggle>=2.1,<3

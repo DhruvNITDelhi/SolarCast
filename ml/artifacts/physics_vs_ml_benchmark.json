@@ -1,0 +1,30 @@
+{
+  "request": {
+    "latitude": 47.6947,
+    "longitude": 9.19,
+    "system_size_kw": 10.0,
+    "tilt": null,
+    "azimuth": null,
+    "losses": 14.0,
+    "efficiency": 18.0
+  },
+  "physics": {
+    "total_kwh": 1.06,
+    "peak_kwh": 0.067,
+    "peak_hour": "2014-12-11T14:00:00+01:00",
+    "confidence": "Medium"
+  },
+  "ml_only": {
+    "total_kwh": 7.21,
+    "peak_kwh": 0.444,
+    "peak_hour": "2014-12-11T12:30:00",
+    "confidence": "Medium"
+  },
+  "comparison": {
+    "total_kwh_delta": 6.15,
+    "total_kwh_delta_percent": 580.19,
+    "peak_kwh_delta": 0.377,
+    "hourly_mae": 0.0686,
+    "compared_intervals": 92
+  }
+}

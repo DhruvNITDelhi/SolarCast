@@ -121,7 +121,7 @@ def fetch_irradiance_forecast(lat: float, lon: float, timezone: str) -> pd.DataF
         ),
         "hourly": ",".join(["cloudcover", "temperature_2m"]),
         "timezone": timezone,
-        "forecast_days": 2,
+        "forecast_days": 4,
         "past_days": 1,
     }
 
@@ -210,12 +210,7 @@ def compute_hourly_generation(
 
 
 def compute_confidence(cloud_data: pd.Series) -> str:
-    """
-    Determine forecast confidence based on cloud cover variability.
-    - High: avg cloud < 20%
-    - Medium: avg cloud 20-60%
-    - Low: avg cloud > 60%
-    """
+    """Determine forecast confidence based on average cloud cover."""
     avg_cloud = cloud_data.mean()
 
     if avg_cloud < 20:
@@ -231,7 +226,9 @@ def assess_confidence(daylight: pd.DataFrame) -> Dict[str, Any]:
         return {
             "confidence": "Low",
             "confidence_score": 20,
-            "confidence_reason": "Very limited daylight forecast data is available for this location right now.",
+            "confidence_reason": (
+                "Very limited daylight forecast data is available for this location right now."
+            ),
         }
 
     avg_cloud = float(daylight["cloud_cover"].mean())
@@ -259,7 +256,9 @@ def assess_confidence(daylight: pd.DataFrame) -> Dict[str, Any]:
     elif cloud_std > 25 or irradiance_volatility > 220:
         reason = "Rapid cloud and irradiance swings are expected, so output may change through the day."
     else:
-        reason = "Conditions look mixed but reasonably stable, so the forecast should be directionally reliable."
+        reason = (
+            "Conditions look mixed but reasonably stable, so the forecast should be directionally reliable."
+        )
 
     return {
         "confidence": level,
@@ -289,6 +288,29 @@ def get_sunrise_sunset(lat: float, lon: float, tz: str) -> Tuple[Optional[str], 
         return None, None
 
 
+def build_daily_summaries(df_forecast: pd.DataFrame) -> list[Dict[str, Any]]:
+    """Aggregate the selected forecast window into daily summaries."""
+    summaries: list[Dict[str, Any]] = []
+    if df_forecast.empty:
+        return summaries
+
+    grouped = df_forecast.groupby(df_forecast.index.strftime("%Y-%m-%d"))
+    for date_key, frame in grouped:
+        total_kwh = round(float(frame["kwh"].sum()), 2)
+        peak_idx = frame["kwh"].idxmax()
+        peak_row = frame.loc[peak_idx]
+        summaries.append(
+            {
+                "date": date_key,
+                "total_kwh": total_kwh,
+                "peak_kwh": round(float(peak_row["kwh"]), 3),
+                "peak_hour": peak_idx.isoformat(),
+            }
+        )
+
+    return summaries
+
+
 def generate_forecast(
     lat: float,
     lon: float,
@@ -297,16 +319,19 @@ def generate_forecast(
     azimuth: Optional[float] = None,
     losses: float = DEFAULT_LOSSES,
     efficiency: float = DEFAULT_EFFICIENCY,
+    forecast_hours: int = 24,
 ) -> Dict[str, Any]:
     """
-    Generate a complete 24-hour solar forecast.
+    Generate a solar forecast.
 
-    Returns dict matching ForecastResponse schema.
+    Returns a dict matching ForecastResponse schema.
     """
     if tilt is None:
         tilt = abs(lat)
     if azimuth is None:
         azimuth = DEFAULT_AZIMUTH
+
+    forecast_hours = max(24, min(72, int(forecast_hours)))
 
     timezone = get_timezone(lat, lon)
     df = fetch_irradiance_forecast(lat, lon, timezone)
@@ -359,13 +384,12 @@ def generate_forecast(
         )
 
     start = now.ceil("15min")
-    end = start + pd.Timedelta(hours=24)
-    df_f = df.loc[start:end].head(96)
+    end = start + pd.Timedelta(hours=forecast_hours)
+    df_f = df.loc[start:end].head(forecast_hours * 4)
 
     daylight = df_f[df_f["solar_zenith"] < 90]
     avg_cloud = daylight["cloud_cover"].mean() if not daylight.empty else 100
     confidence_data = assess_confidence(daylight)
-    confidence = confidence_data["confidence"]
 
     maintenance_alert = None
     if avg_cloud < 15:
@@ -386,10 +410,11 @@ def generate_forecast(
             }
         )
 
+    daily_summaries = build_daily_summaries(df_f)
     total_kwh = round(sum(h["kwh"] for h in hourly), 2)
 
     if hourly:
-        peak = max(hourly, key=lambda h: h["kwh"])
+        peak = max(hourly, key=lambda item: item["kwh"])
         peak_hour = peak["hour"]
         peak_kwh = peak["kwh"]
     else:
@@ -399,9 +424,8 @@ def generate_forecast(
     best_3h_sum = -1.0
     smart_start = None
     smart_end = None
-
     for i in range(len(hourly) - 11):
-        three_hour_sum = sum(h["kwh"] for h in hourly[i : i + 12])
+        three_hour_sum = sum(item["kwh"] for item in hourly[i : i + 12])
         if three_hour_sum > best_3h_sum:
             best_3h_sum = three_hour_sum
             smart_start = hourly[i]["hour"]
@@ -411,10 +435,12 @@ def generate_forecast(
 
     return {
         "hourly": hourly,
+        "daily_summaries": daily_summaries,
+        "forecast_hours": forecast_hours,
         "total_kwh": total_kwh,
         "peak_hour": peak_hour,
         "peak_kwh": peak_kwh,
-        "confidence": confidence,
+        "confidence": confidence_data["confidence"],
         "confidence_score": confidence_data["confidence_score"],
         "confidence_reason": confidence_data["confidence_reason"],
         "location_info": {

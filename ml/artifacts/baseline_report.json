@@ -1,0 +1,60 @@
+{
+  "dataset_target_column": "DE_KN_residential3_pv",
+  "target_is_interval_energy": true,
+  "target_selection_note": "Selected from OPSD cumulative PV meter series using highest coverage and low interpolation; training target is the per-15-minute energy increment computed by differencing.",
+  "num_rows_train": 63084,
+  "num_rows_validation": 13518,
+  "num_rows_test": 13519,
+  "feature_count": 21,
+  "weather_features_enabled": true,
+  "models": {
+    "ridge": {
+      "validation_metrics": {
+        "mae": 0.05625349043451148,
+        "rmse": 0.08408682207092251,
+        "daily_energy_mae": 2.7323261745163383
+      },
+      "test_metrics": {
+        "mae": 0.07448456875416339,
+        "rmse": 0.11876477036558934,
+        "daily_energy_mae": 3.2689484954289254
+      }
+    },
+    "hist_gradient_boosting": {
+      "validation_metrics": {
+        "mae": 0.029737837453515062,
+        "rmse": 0.11369645408100292,
+        "daily_energy_mae": 1.332969663680468
+      },
+      "test_metrics": {
+        "mae": 0.04166441006243393,
+        "rmse": 0.137023338859927,
+        "daily_energy_mae": 1.2932128602382809
+      }
+    },
+    "random_forest": {
+      "validation_metrics": {
+        "mae": 0.02257813251807686,
+        "rmse": 0.2797131685354669,
+        "daily_energy_mae": 1.121915158978663
+      },
+      "test_metrics": {
+        "mae": 0.025104174214089635,
+        "rmse": 0.05643449788095273,
+        "daily_energy_mae": 0.5071140904832618
+      }
+    }
+  },
+  "persistence_baseline": {
+    "validation_metrics": {
+      "mae": 0.01510955762686951,
+      "rmse": 0.037883089833573816,
+      "daily_energy_mae": 0.0025177304964508047
+    },
+    "test_metrics": {
+      "mae": 0.030169909016943847,
+      "rmse": 0.06274150824037777,
+      "daily_energy_mae": 0.1170425531916227
+    }
+  }
+}

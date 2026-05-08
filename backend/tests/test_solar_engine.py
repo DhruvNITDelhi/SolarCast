@@ -4,7 +4,13 @@ import unittest
 
 import pandas as pd
 
-from solar_engine import assess_confidence, build_forecast_dataframe, compute_confidence, localize_index
+from solar_engine import (
+    assess_confidence,
+    build_daily_summaries,
+    build_forecast_dataframe,
+    compute_confidence,
+    localize_index,
+)
 
 
 class SolarEngineTests(unittest.TestCase):
@@ -87,6 +93,22 @@ class SolarEngineTests(unittest.TestCase):
         result = assess_confidence(daylight)
         self.assertEqual(result["confidence"], "Low")
         self.assertLess(result["confidence_score"], 45)
+
+    def test_build_daily_summaries_groups_forecast_rows_by_date(self):
+        index = pd.to_datetime(
+            [
+                "2026-04-15 10:00:00+05:30",
+                "2026-04-15 10:15:00+05:30",
+                "2026-04-16 09:00:00+05:30",
+            ]
+        )
+        frame = pd.DataFrame({"kwh": [1.2, 0.8, 2.5]}, index=index)
+
+        summaries = build_daily_summaries(frame)
+        self.assertEqual(len(summaries), 2)
+        self.assertEqual(summaries[0]["date"], "2026-04-15")
+        self.assertEqual(summaries[0]["total_kwh"], 2.0)
+        self.assertEqual(summaries[1]["peak_kwh"], 2.5)
 
 
 if __name__ == "__main__":

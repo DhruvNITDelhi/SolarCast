@@ -38,7 +38,9 @@ class TTLCache:
 
     def _prune_expired(self) -> None:
         now = time.time()
-        expired_keys = [key for key, (expires_at, _) in self._data.items() if expires_at <= now]
+        expired_keys = [
+            key for key, (expires_at, _) in self._data.items() if expires_at <= now
+        ]
         for key in expired_keys:
             self._data.pop(key, None)
 
@@ -51,7 +53,8 @@ def build_forecast_cache_key(
     azimuth: float | None,
     losses: float,
     efficiency: float,
-) -> tuple[float, float, float, float | None, float | None, float, float]:
+    forecast_hours: int,
+) -> tuple[float, float, float, float | None, float | None, float, float, int]:
     """Normalize request values so semantically identical requests reuse cache entries."""
 
     def _round(value: float | None, digits: int = 4) -> float | None:
@@ -65,4 +68,5 @@ def build_forecast_cache_key(
         _round(azimuth, 2),
         round(losses, 2),
         round(efficiency, 2),
+        int(forecast_hours),
     )

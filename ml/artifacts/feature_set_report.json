@@ -1,0 +1,102 @@
+{
+  "dataset_target_column": "DE_KN_residential3_pv",
+  "weather_features_enabled": true,
+  "feature_sets": {
+    "cold_start_weather_time": {
+      "feature_count": 15,
+      "includes_target_history": false,
+      "models": {
+        "ridge": {
+          "validation_metrics": {
+            "mae": 0.09691689196487457,
+            "rmse": 0.12097000853538546,
+            "daily_energy_mae": 3.0020908395067325
+          },
+          "test_metrics": {
+            "mae": 0.11763485921627044,
+            "rmse": 0.14985342056846548,
+            "daily_energy_mae": 2.926272791838166
+          }
+        },
+        "hist_gradient_boosting": {
+          "validation_metrics": {
+            "mae": 0.07813361619617765,
+            "rmse": 0.3592093477723057,
+            "daily_energy_mae": 3.923728501617366
+          },
+          "test_metrics": {
+            "mae": 0.08501078087823874,
+            "rmse": 0.12076495488513529,
+            "daily_energy_mae": 4.1861707479032955
+          }
+        },
+        "random_forest": {
+          "validation_metrics": {
+            "mae": 0.08642278247318598,
+            "rmse": 0.6284482657802077,
+            "daily_energy_mae": 6.717812210502003
+          },
+          "test_metrics": {
+            "mae": 0.05391283207855496,
+            "rmse": 0.10053001690585849,
+            "daily_energy_mae": 2.8157765290943995
+          }
+        }
+      }
+    },
+    "adaptive_with_lags": {
+      "feature_count": 21,
+      "includes_target_history": true,
+      "models": {
+        "ridge": {
+          "validation_metrics": {
+            "mae": 0.05625349043451148,
+            "rmse": 0.08408682207092251,
+            "daily_energy_mae": 2.7323261745163383
+          },
+          "test_metrics": {
+            "mae": 0.07448456875416339,
+            "rmse": 0.11876477036558934,
+            "daily_energy_mae": 3.2689484954289254
+          }
+        },
+        "hist_gradient_boosting": {
+          "validation_metrics": {
+            "mae": 0.029737837453515062,
+            "rmse": 0.11369645408100292,
+            "daily_energy_mae": 1.332969663680468
+          },
+          "test_metrics": {
+            "mae": 0.04166441006243393,
+            "rmse": 0.137023338859927,
+            "daily_energy_mae": 1.2932128602382809
+          }
+        },
+        "random_forest": {
+          "validation_metrics": {
+            "mae": 0.02257813251807686,
+            "rmse": 0.2797131685354669,
+            "daily_energy_mae": 1.121915158978663
+          },
+          "test_metrics": {
+            "mae": 0.025104174214089635,
+            "rmse": 0.05643449788095273,
+            "daily_energy_mae": 0.5071140904832618
+          }
+        },
+        "persistence_baseline": {
+          "validation_metrics": {
+            "mae": 0.01510955762686951,
+            "rmse": 0.037883089833573816,
+            "daily_energy_mae": 0.0025177304964508047
+          },
+          "test_metrics": {
+            "mae": 0.030169909016943847,
+            "rmse": 0.06274150824037777,
+            "daily_energy_mae": 0.1170425531916227
+          }
+        }
+      }
+    }
+  }
+}
