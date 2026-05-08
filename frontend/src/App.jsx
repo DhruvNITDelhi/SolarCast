@@ -11,6 +11,7 @@ import {
 import ForecastChart from './components/ForecastChart';
 import Leaderboard from './components/Leaderboard';
 import LocationSearch from './components/LocationSearch';
+import ComparisonPanel from './components/ComparisonPanel';
 import SummaryPanel from './components/SummaryPanel';
 import SunArc from './components/SunArc';
 import SystemParams from './components/SystemParams';
@@ -21,6 +22,8 @@ function App() {
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
   const [forecastHours, setForecastHours] = useState(24);
+  const [engineMode, setEngineMode] = useState('physics');
+  const [activeComparisonView, setActiveComparisonView] = useState('hybrid');
   const [params, setParams] = useState({
     system_size_kw: 10,
     tilt: null,
@@ -29,6 +32,7 @@ function App() {
     efficiency: 18,
   });
   const [forecast, setForecast] = useState(null);
+  const [comparisonBundle, setComparisonBundle] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -46,9 +50,19 @@ function App() {
     setLoading(true);
     setError(null);
     setForecast(null);
+    setComparisonBundle(null);
 
     try {
-      const res = await fetch(`${API_BASE}/forecast`, {
+      const endpoint =
+        engineMode === 'hybrid'
+          ? '/forecast/hybrid'
+          : engineMode === 'ml'
+            ? '/forecast/ml'
+            : engineMode === 'compare'
+              ? '/forecast/compare'
+              : '/forecast';
+
+      const res = await fetch(`${API_BASE}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -69,13 +83,32 @@ function App() {
       }
 
       const data = await res.json();
-      setForecast(data);
+      if (engineMode === 'compare') {
+        setComparisonBundle(data);
+        setActiveComparisonView('hybrid');
+        setForecast(data.hybrid || data.physics);
+      } else {
+        setForecast(data);
+      }
     } catch (err) {
       setError(err.message || 'Failed to generate forecast. Please try again.');
     }
 
     setLoading(false);
-  }, [forecastHours, lat, lon, params]);
+  }, [engineMode, forecastHours, lat, lon, params]);
+
+  const handleComparisonViewChange = useCallback((view) => {
+    setActiveComparisonView(view);
+    if (!comparisonBundle) return;
+
+    if (view === 'physics') {
+      setForecast(comparisonBundle.physics);
+    } else if (view === 'hybrid') {
+      setForecast(comparisonBundle.hybrid);
+    } else {
+      setForecast(comparisonBundle.ml_only);
+    }
+  }, [comparisonBundle]);
 
   const downloadCSV = useCallback(() => {
     if (!forecast) return;
@@ -198,6 +231,41 @@ function App() {
               </div>
             </div>
 
+            <div className="p-3 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <BarChart3 className="w-4 h-4 text-[var(--solar-gold)]" />
+                <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">
+                  Forecast Engine
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  ['physics', 'Physics'],
+                  ['hybrid', 'Hybrid'],
+                  ['ml', 'ML-only'],
+                  ['compare', 'Compare'],
+                ].map(([mode, label]) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setEngineMode(mode)}
+                    className="px-3 py-2 rounded-sm border text-xs font-semibold transition-all"
+                    style={{
+                      borderColor:
+                        engineMode === mode ? 'var(--solar-gold)' : 'var(--border-primary)',
+                      color: engineMode === mode ? 'var(--solar-gold)' : 'var(--text-secondary)',
+                      background:
+                        engineMode === mode
+                          ? 'rgba(245, 158, 11, 0.08)'
+                          : 'var(--bg-secondary)',
+                    }}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <button
               id="generate-forecast-btn"
               onClick={generateForecast}
@@ -299,6 +367,19 @@ function App() {
 
             <div className="lg:col-span-4">
               <SummaryPanel forecast={forecast} />
+              {comparisonBundle && (
+                <div className="mt-3">
+                  <ComparisonPanel
+                    comparison={comparisonBundle.comparison}
+                    physics={comparisonBundle.physics}
+                    mlOnly={comparisonBundle.ml_only}
+                    hybrid={comparisonBundle.hybrid}
+                    hybridComparison={comparisonBundle.hybrid_comparison}
+                    activeView={activeComparisonView}
+                    onViewChange={handleComparisonViewChange}
+                  />
+                </div>
+              )}
             </div>
 
             {forecast.daily_summaries?.length > 1 && (

@@ -5,7 +5,6 @@ export default function SunArc({ sunrise, sunset }) {
     const width = 400;
     const height = 80;
     const margin = 30;
-    const arcWidth = width - margin * 2;
 
     // Parse sunrise/sunset times
     let srHour = 6, ssHour = 18;

@@ -38,7 +38,7 @@ export default function Leaderboard() {
             if (!res.ok) return { name: item.name, kwh: 0 };
             const data = await res.json();
             return { name: item.name, kwh: data.total_kwh || 0 };
-          } catch (e) {
+          } catch {
             return { name: item.name, kwh: 0 };
           }
         });
@@ -50,7 +50,7 @@ export default function Leaderboard() {
           setRankings(results.slice(0, 4)); // Show Top 4
           setLoading(false);
         }
-      } catch (err) {
+      } catch {
         if (mounted) setLoading(false);
       }
     }
