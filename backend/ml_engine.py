@@ -23,9 +23,9 @@ if str(PROJECT_ROOT) not in sys.path:
 from ml.ml_only_model import MODEL_ARTIFACT_PATH, MODEL_METADATA_PATH, build_cold_start_features  # noqa: E402
 from ml.predict_ml_only import fetch_forecast_weather  # noqa: E402
 try:  # noqa: E402
-    from .solar_engine import assess_confidence, compute_poa_irradiance, get_sunrise_sunset, get_timezone
+    from .solar_engine import assess_confidence, build_daily_summaries, compute_poa_irradiance, get_sunrise_sunset, get_timezone
 except ImportError:  # noqa: E402
-    from solar_engine import assess_confidence, compute_poa_irradiance, get_sunrise_sunset, get_timezone
+    from solar_engine import assess_confidence, build_daily_summaries, compute_poa_irradiance, get_sunrise_sunset, get_timezone
 
 
 DEFAULT_REFERENCE_SYSTEM_KW = 4.0
@@ -222,6 +222,7 @@ def generate_ml_forecast_from_weather_dataframe(
     confidence, notes = _confidence_and_notes(daylight, reference_kw)
     total_kwh = round(float(display["kwh"].sum()), 2)
     peak_row = display.loc[display["kwh"].idxmax()]
+    daily_summaries = build_daily_summaries(display.set_index("timestamp")[["kwh"]])
     sunrise, sunset = get_sunrise_sunset(lat, lon, timezone)
     smart_window_start, smart_window_end = _build_smart_window(display)
 
@@ -242,6 +243,8 @@ def generate_ml_forecast_from_weather_dataframe(
         "engine_name": "Experimental ML-only cold-start",
         "engine_notes": notes,
         "hourly": hourly,
+        "daily_summaries": daily_summaries,
+        "forecast_hours": forecast_hours,
         "total_kwh": total_kwh,
         "peak_hour": pd.Timestamp(peak_row["timestamp"]).isoformat(),
         "peak_kwh": round(_safe_float(peak_row["kwh"]), 3),

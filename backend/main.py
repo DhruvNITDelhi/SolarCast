@@ -9,6 +9,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from cache import TTLCache, build_forecast_cache_key
+from compare_engine import compare_forecasts
+from hybrid_engine import generate_hybrid_forecast
+from ml_engine import generate_ml_forecast
 from models import ForecastRequest, ForecastResponse
 from settings import (
     get_cors_origin_regex,
@@ -120,6 +123,107 @@ async def forecast(req: ForecastRequest):
             status_code=500,
             detail=f"Forecast calculation failed: {str(exc)}",
         )
+
+
+@app.post("/forecast/ml", response_model=ForecastResponse)
+async def ml_forecast(req: ForecastRequest):
+    """Generate an experimental ML-only cold-start forecast."""
+    try:
+        logger.info(
+            "ML forecast request: lat=%s, lon=%s, size=%skW, hours=%s",
+            req.lat,
+            req.lon,
+            req.system_size_kw,
+            req.forecast_hours,
+        )
+        return generate_ml_forecast(
+            lat=req.lat,
+            lon=req.lon,
+            system_size_kw=req.system_size_kw,
+            tilt=req.tilt,
+            azimuth=req.azimuth,
+            losses=req.losses,
+            efficiency=req.efficiency,
+            forecast_hours=req.forecast_hours,
+        )
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error("ML forecast error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"ML forecast failed: {str(exc)}")
+
+
+@app.post("/forecast/hybrid", response_model=ForecastResponse)
+async def hybrid_forecast(req: ForecastRequest):
+    """Generate the patent-track physics + ML residual forecast."""
+    try:
+        logger.info(
+            "Hybrid forecast request: lat=%s, lon=%s, size=%skW, hours=%s",
+            req.lat,
+            req.lon,
+            req.system_size_kw,
+            req.forecast_hours,
+        )
+        return generate_hybrid_forecast(
+            lat=req.lat,
+            lon=req.lon,
+            system_size_kw=req.system_size_kw,
+            tilt=req.tilt,
+            azimuth=req.azimuth,
+            losses=req.losses,
+            efficiency=req.efficiency,
+            forecast_hours=req.forecast_hours,
+        )
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error("Hybrid forecast error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Hybrid forecast failed: {str(exc)}")
+
+
+@app.post("/forecast/compare")
+async def compare_forecast_modes(req: ForecastRequest):
+    """Compare physics, ML-only, and hybrid forecasts for the same request."""
+    try:
+        logger.info(
+            "Forecast comparison request: lat=%s, lon=%s, size=%skW, hours=%s",
+            req.lat,
+            req.lon,
+            req.system_size_kw,
+            req.forecast_hours,
+        )
+        common_args = {
+            "lat": req.lat,
+            "lon": req.lon,
+            "system_size_kw": req.system_size_kw,
+            "tilt": req.tilt,
+            "azimuth": req.azimuth,
+            "losses": req.losses,
+            "efficiency": req.efficiency,
+            "forecast_hours": req.forecast_hours,
+        }
+        physics = generate_forecast(**common_args)
+        ml_only = generate_ml_forecast(**common_args)
+        hybrid = generate_hybrid_forecast(**common_args)
+
+        return {
+            "physics": physics,
+            "ml_only": ml_only,
+            "hybrid": hybrid,
+            "comparison": compare_forecasts(physics, ml_only),
+            "hybrid_comparison": compare_forecasts(physics, hybrid),
+        }
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error("Forecast comparison error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Forecast comparison failed: {str(exc)}")
 
 
 if __name__ == "__main__":

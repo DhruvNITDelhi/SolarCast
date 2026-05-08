@@ -67,6 +67,7 @@ def generate_hybrid_forecast(
     azimuth: float | None = None,
     losses: float = 14.0,
     efficiency: float = 18.0,
+    forecast_hours: int = 24,
 ) -> Dict[str, Any]:
     model, metadata = load_hybrid_artifacts()
     physics = generate_forecast(
@@ -77,6 +78,7 @@ def generate_hybrid_forecast(
         azimuth=azimuth,
         losses=losses,
         efficiency=efficiency,
+        forecast_hours=forecast_hours,
     )
     features = _feature_frame_from_physics(physics, system_size_kw)
     residual_cf = np.asarray(model.predict(ensure_hybrid_columns(features)))

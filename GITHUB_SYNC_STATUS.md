@@ -10,74 +10,60 @@ Checked on: 2026-05-08
 feature/analytics-upgrade
 ```
 
-## Last Known Synced Commit
-
-```text
-f25ca6b Harden backend and improve forecast confidence
-```
-
-At the start of this check, local `HEAD` matched the local tracking reference `origin/feature/analytics-upgrade`.
-
-## Authentication Status
+## Remote Status
 
 The configured remote is:
 
 ```text
-git@github.com:DhruvNITDelhi/SolarCast.git
+https://github.com/DhruvNITDelhi/SolarCast.git
 ```
 
-`git fetch origin` failed because the current machine/session does not have a working SSH key for GitHub:
+Live remote branches checked with `git fetch origin` and `git ls-remote --heads origin`:
 
 ```text
-git@github.com: Permission denied (publickey)
+origin/main                    8eddb4b
+origin/feature/analytics-upgrade 3f8ab4d
 ```
 
-GitHub CLI is also not installed:
+`feature/analytics-upgrade` is merged into `origin/main`, and the file tree for `origin/main` matches the current feature branch.
 
-```text
-gh: The term 'gh' is not recognized
-```
+The local `main` branch is behind `origin/main`; use `git switch main` and `git pull --ff-only origin main` when you want the local main branch updated.
 
-Because of this, the repository could be prepared locally, but it could not be pushed to GitHub from this session.
+## Local Working State
 
-## Local Work Prepared For Sync
+The current working tree has active local edits after the status review:
 
-The tracked repository layout has been updated with the SolarCast patent-track work:
+- Backend routes added for:
+  - `POST /forecast/ml`
+  - `POST /forecast/hybrid`
+  - `POST /forecast/compare`
+- Frontend forecast engine selector added:
+  - Physics
+  - Hybrid
+  - ML-only
+  - Compare
+- Existing comparison panel wired into the main app.
+- Minor lint fixes in frontend components.
+- ML-only API response aligned with the shared forecast response shape.
 
-- Hybrid physics + ML residual forecast endpoint
-- ML-only forecast endpoint support
-- Physics vs Hybrid vs ML comparison response
-- Frontend Hybrid mode and comparison panel
-- Indian solar dataset training pipeline
-- Hybrid residual training pipeline
-- Exported lightweight model artifacts
-- Documentation describing dataset, training process, hybrid approach, and patent-track next steps
-
-Generated datasets, raw Kaggle/OPSD files, local cache folders, and development-only inspection folders are ignored through `.gitignore`.
+These edits still need to be committed and pushed after final verification.
 
 ## Verification
 
-Latest local verification:
+Latest pre-edit baseline:
 
 ```text
-python -m py_compile backend\hybrid_engine.py ml\train_hybrid_residual_model.py ml\hybrid_residual_model.py
-python -m pytest tests -q
-npm.cmd run build
-```
-
-Result:
-
-```text
-Backend tests: 8 passed
-Frontend build: passed
 Python compile check: passed
+Backend tests: 10 passed
+Frontend build: passed
+Frontend lint: failed on 3 unused-variable errors
 ```
 
-## Push Blocker
+The lint errors have now been addressed locally. Run the final verification suite before committing:
 
-To finish syncing with GitHub, one of these needs to be fixed:
-
-1. Add/configure the correct SSH key for `git@github.com:DhruvNITDelhi/SolarCast.git`.
-2. Install/authenticate GitHub CLI.
-3. Switch remote to HTTPS and authenticate with Git Credential Manager or a GitHub token.
-
+```text
+python -m py_compile backend\main.py backend\solar_engine.py backend\hybrid_engine.py backend\ml_engine.py ml\hybrid_residual_model.py ml\train_hybrid_residual_model.py
+cd backend && python -m pytest tests -q
+cd frontend && npm.cmd run lint
+cd frontend && npm.cmd run build
+```

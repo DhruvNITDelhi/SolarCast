@@ -111,6 +111,7 @@ Backend API routes in this worktree:
 ```text
 POST /forecast
 POST /forecast/ml
+POST /forecast/hybrid
 POST /forecast/compare
 ```
 

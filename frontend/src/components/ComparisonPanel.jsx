@@ -2,9 +2,22 @@ import { Scale, Activity, TrendingUp, ArrowLeftRight } from 'lucide-react';
 
 export default function ComparisonPanel({ comparison, physics, mlOnly, hybrid, hybridComparison, activeView, onViewChange }) {
   if (!comparison || !physics || !mlOnly) return null;
-  const activeComparison = activeView === 'hybrid' && hybridComparison ? hybridComparison : comparison;
-  const activeEngine = activeView === 'hybrid' && hybrid ? hybrid : mlOnly;
-  const activeLabel = activeView === 'hybrid' ? 'Hybrid' : 'ML-only';
+  const physicsComparison = {
+    total_kwh_delta: 0,
+    total_kwh_delta_percent: 0,
+    hourly_mae: 0,
+    compared_intervals: physics.hourly?.length || 0,
+    physics_matched_total_kwh: physics.total_kwh,
+    ml_matched_total_kwh: physics.total_kwh,
+  };
+  const activeComparison =
+    activeView === 'physics'
+      ? physicsComparison
+      : activeView === 'hybrid' && hybridComparison
+        ? hybridComparison
+        : comparison;
+  const activeEngine = activeView === 'hybrid' && hybrid ? hybrid : activeView === 'physics' ? physics : mlOnly;
+  const activeLabel = activeView === 'hybrid' ? 'Hybrid' : activeView === 'physics' ? 'Physics' : 'ML-only';
 
   const deltaTone =
     activeComparison.total_kwh_delta > 0
@@ -85,7 +98,7 @@ export default function ComparisonPanel({ comparison, physics, mlOnly, hybrid, h
           <EngineMiniCard
             title={activeLabel}
             forecast={activeEngine}
-            matchedTotal={activeView === 'hybrid' ? activeComparison.ml_matched_total_kwh : comparison.ml_matched_total_kwh}
+            matchedTotal={activeComparison.ml_matched_total_kwh}
             tone="text-[var(--solar-gold)]"
           />
         </div>
