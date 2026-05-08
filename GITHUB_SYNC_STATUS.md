@@ -7,7 +7,7 @@ Checked on: 2026-05-08
 ## Current Local Branch
 
 ```text
-feature/analytics-upgrade
+main
 ```
 
 ## Remote Status
@@ -18,52 +18,62 @@ The configured remote is:
 https://github.com/DhruvNITDelhi/SolarCast.git
 ```
 
-Live remote branches checked with `git fetch origin` and `git ls-remote --heads origin`:
+Latest verified remote branch tips:
 
 ```text
-origin/main                    8eddb4b
-origin/feature/analytics-upgrade 3f8ab4d
+origin/main                      4908a12 Add report evidence and API tests
+origin/feature/analytics-upgrade 7758f0a Wire forecast engines and refresh docs
 ```
 
-`feature/analytics-upgrade` is merged into `origin/main`, and the file tree for `origin/main` matches the current feature branch.
+Local `main` matches `origin/main`.
 
-The local `main` branch is behind `origin/main`; use `git switch main` and `git pull --ff-only origin main` when you want the local main branch updated.
+## Project Status
 
-## Local Working State
+The repository contains the complete SolarCast application:
 
-The current working tree has active local edits after the status review:
-
-- Backend routes added for:
-  - `POST /forecast/ml`
-  - `POST /forecast/hybrid`
-  - `POST /forecast/compare`
-- Frontend forecast engine selector added:
-  - Physics
-  - Hybrid
-  - ML-only
-  - Compare
-- Existing comparison panel wired into the main app.
-- Minor lint fixes in frontend components.
-- ML-only API response aligned with the shared forecast response shape.
-
-These edits still need to be committed and pushed after final verification.
+- Physics-based solar forecasting endpoint
+- ML-only cold-start forecast endpoint
+- Hybrid physics + ML residual correction endpoint
+- Multi-engine comparison endpoint
+- React dashboard with engine selection and comparison UI
+- ML training, benchmarking, and model artifact workflow
+- Report-ready benchmark assets and screenshots under `output/report_assets`
 
 ## Verification
 
-Latest pre-edit baseline:
-
-```text
-Python compile check: passed
-Backend tests: 10 passed
-Frontend build: passed
-Frontend lint: failed on 3 unused-variable errors
-```
-
-The lint errors have now been addressed locally. Run the final verification suite before committing:
+Latest verification before report generation:
 
 ```text
 python -m py_compile backend\main.py backend\solar_engine.py backend\hybrid_engine.py backend\ml_engine.py ml\hybrid_residual_model.py ml\train_hybrid_residual_model.py
-cd backend && python -m pytest tests -q
-cd frontend && npm.cmd run lint
-cd frontend && npm.cmd run build
+python -m pytest tests -q
+npm.cmd run lint
+npm.cmd run build
+```
+
+Result:
+
+```text
+Python compile check: passed
+Backend tests: 14 passed
+Frontend lint: passed
+Frontend build: passed
+```
+
+Only non-blocking note: the frontend production build reports a large JavaScript chunk warning. This is a future optimization item, not a functional failure.
+
+## Report Draft
+
+A first formatted DOCX project report has been generated locally at:
+
+```text
+output/doc/SolarCast_Project_Report_Dhruv_Gupta.docx
+```
+
+Latest expanded Word verification:
+
+```text
+Pages: 72
+Words: 14087
+Tables: 13
+Figures: 4
 ```

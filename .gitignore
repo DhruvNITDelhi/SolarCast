@@ -9,6 +9,8 @@ dist/
 .env
 .env.*
 
+output/doc/
+
 ml/data/raw/
 ml/data/processed/
 ml/site_config.json
