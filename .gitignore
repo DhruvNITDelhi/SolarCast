@@ -10,6 +10,7 @@ dist/
 .env.*
 
 output/doc/
+output/presentation/
 
 ml/data/raw/
 ml/data/processed/
