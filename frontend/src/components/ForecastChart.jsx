@@ -1,79 +1,123 @@
 import { useMemo } from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid,
-  Tooltip, ResponsiveContainer, ReferenceDot, Line, ComposedChart
+  Area,
+  CartesianGrid,
+  ComposedChart,
+  ReferenceDot,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 
-/* ─── Custom Tooltip ─────────────────────────────────────────────────────── */
-function CustomTooltip({ active, payload, label }) {
+function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null;
-  const d = payload[0]?.payload;
-  if (!d) return null;
+  const point = payload[0]?.payload;
+  if (!point) return null;
 
   return (
-    <div style={{
-      background: '#111a2e',
-      border: '1px solid #1e2d45',
-      borderRadius: '4px',
-      padding: '10px 14px',
-      boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-      minWidth: '160px',
-    }}>
-      <p style={{ color: '#e8edf5', fontWeight: 600, fontSize: '13px', marginBottom: '8px', fontFamily: 'JetBrains Mono, monospace' }}>
-        {d.displayTime}
+    <div
+      style={{
+        background: '#111a2e',
+        border: '1px solid #1e2d45',
+        borderRadius: '4px',
+        padding: '10px 14px',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+        minWidth: '180px',
+      }}
+    >
+      <p
+        style={{
+          color: '#e8edf5',
+          fontWeight: 600,
+          fontSize: '13px',
+          marginBottom: '8px',
+          fontFamily: 'JetBrains Mono, monospace',
+        }}
+      >
+        {point.displayTime}
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <span style={{ color: '#8899b4', fontSize: '11px' }}>Generation</span>
-          <span style={{ color: '#f59e0b', fontWeight: 600, fontSize: '12px', fontFamily: 'JetBrains Mono, monospace' }}>
-            {d.kwh.toFixed(3)} kWh
-          </span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <span style={{ color: '#8899b4', fontSize: '11px' }}>POA Irradiance</span>
-          <span style={{ color: '#63b3ed', fontWeight: 500, fontSize: '12px', fontFamily: 'JetBrains Mono, monospace' }}>
-            {d.irradiance.toFixed(0)} W/m²
-          </span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <span style={{ color: '#8899b4', fontSize: '11px' }}>Cloud Cover</span>
-          <span style={{ color: '#94a3b8', fontWeight: 500, fontSize: '12px', fontFamily: 'JetBrains Mono, monospace' }}>
-            {d.cloud_cover.toFixed(0)}%
-          </span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <span style={{ color: '#8899b4', fontSize: '11px' }}>Temperature</span>
-          <span style={{ color: '#94a3b8', fontWeight: 500, fontSize: '12px', fontFamily: 'JetBrains Mono, monospace' }}>
-            {d.temperature.toFixed(1)}°C
-          </span>
-        </div>
+        <MetricRow label="Generation" value={`${point.kwh.toFixed(3)} kWh`} color="#f59e0b" />
+        <MetricRow
+          label="POA Irradiance"
+          value={`${point.irradiance.toFixed(0)} W/m2`}
+          color="#63b3ed"
+        />
+        <MetricRow
+          label="Cloud Cover"
+          value={`${point.cloud_cover.toFixed(0)}%`}
+          color="#94a3b8"
+        />
+        <MetricRow
+          label="Temperature"
+          value={`${point.temperature.toFixed(1)} C`}
+          color="#94a3b8"
+        />
       </div>
     </div>
   );
 }
 
-/* ─── ForecastChart Component ────────────────────────────────────────────── */
-export default function ForecastChart({ data, peakHour }) {
+function MetricRow({ label, value, color }) {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+      <span style={{ color: '#8899b4', fontSize: '11px' }}>{label}</span>
+      <span
+        style={{
+          color,
+          fontWeight: 500,
+          fontSize: '12px',
+          fontFamily: 'JetBrains Mono, monospace',
+        }}
+      >
+        {value}
+      </span>
+    </div>
+  );
+}
+
+export default function ForecastChart({ data, peakHour, forecastHours = 24 }) {
   const chartData = useMemo(() => {
     if (!data?.length) return [];
-    return data.map((d) => {
-      const dt = new Date(d.hour);
+
+    return data.map((entry) => {
+      const dt = new Date(entry.hour);
+      const isMultiDay = forecastHours > 24;
+
+      let tickLabel = '';
+      if (isMultiDay) {
+        if (dt.getHours() === 0 && dt.getMinutes() === 0) {
+          tickLabel = dt.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+        } else if (dt.getMinutes() === 0 && dt.getHours() % 6 === 0) {
+          tickLabel = dt.toLocaleTimeString('en-IN', { hour: '2-digit', hour12: true });
+        }
+      } else if (dt.getMinutes() === 0) {
+        tickLabel = dt.toLocaleTimeString('en-IN', { hour: '2-digit', hour12: true });
+      }
+
       return {
-        ...d,
-        displayTime: dt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        tickLabel: dt.getMinutes() === 0 ? dt.toLocaleTimeString('en-IN', { hour: '2-digit', hour12: true }) : '',
-        isPeak: d.hour === peakHour,
+        ...entry,
+        displayTime: isMultiDay
+          ? dt.toLocaleString('en-IN', {
+              day: '2-digit',
+              month: 'short',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            })
+          : dt.toLocaleTimeString('en-IN', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true,
+            }),
+        tickLabel,
+        isPeak: entry.hour === peakHour,
       };
     });
-  }, [data, peakHour]);
+  }, [data, peakHour, forecastHours]);
 
-  const peakData = useMemo(() => {
-    return chartData.find(d => d.isPeak);
-  }, [chartData]);
-
-  const maxKwh = useMemo(() => {
-    return Math.max(...chartData.map(d => d.kwh), 0.1);
-  }, [chartData]);
+  const peakData = useMemo(() => chartData.find((item) => item.isPeak), [chartData]);
 
   if (!chartData.length) return null;
 
@@ -93,26 +137,28 @@ export default function ForecastChart({ data, peakHour }) {
             </linearGradient>
           </defs>
 
-          <CartesianGrid
-            strokeDasharray="3 3"
-            stroke="rgba(30, 45, 69, 0.5)"
-            vertical={false}
-          />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(30, 45, 69, 0.5)" vertical={false} />
 
           <XAxis
             dataKey="displayTime"
             axisLine={{ stroke: '#1e2d45' }}
             tickLine={false}
             tick={({ x, y, payload }) => {
-              const item = chartData.find(d => d.displayTime === payload.value);
-              if (item && item.tickLabel) {
-                 return (
-                   <text x={x} y={y + 12} fill="#5a6e8a" fontSize={10} fontFamily="JetBrains Mono, monospace" textAnchor="middle">
-                     {item.tickLabel}
-                   </text>
-                 );
-              }
-              return null;
+              const item = chartData.find((point) => point.displayTime === payload.value);
+              if (!item?.tickLabel) return null;
+
+              return (
+                <text
+                  x={x}
+                  y={y + 12}
+                  fill="#5a6e8a"
+                  fontSize={10}
+                  fontFamily="JetBrains Mono, monospace"
+                  textAnchor="middle"
+                >
+                  {item.tickLabel}
+                </text>
+              );
             }}
             interval={0}
           />
@@ -132,13 +178,19 @@ export default function ForecastChart({ data, peakHour }) {
             axisLine={false}
             tickLine={false}
             tick={{ fill: '#5a6e8a', fontSize: 9, fontFamily: 'JetBrains Mono, monospace' }}
-            label={{ value: 'W/m²', angle: 90, position: 'insideRight', fill: '#5a6e8a', fontSize: 9, dx: -10 }}
+            label={{
+              value: 'W/m2',
+              angle: 90,
+              position: 'insideRight',
+              fill: '#5a6e8a',
+              fontSize: 9,
+              dx: -10,
+            }}
             domain={[0, 'auto']}
           />
 
           <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'rgba(245, 158, 11, 0.2)', strokeWidth: 1 }} />
 
-          {/* Irradiance area (subtle, behind) */}
           <Area
             yAxisId="irradiance"
             type="monotone"
@@ -150,7 +202,6 @@ export default function ForecastChart({ data, peakHour }) {
             activeDot={false}
           />
 
-          {/* kWh area (primary) */}
           <Area
             yAxisId="kwh"
             type="monotone"
@@ -167,7 +218,6 @@ export default function ForecastChart({ data, peakHour }) {
             }}
           />
 
-          {/* Peak marker */}
           {peakData && peakData.kwh > 0 && (
             <ReferenceDot
               yAxisId="kwh"
@@ -182,21 +232,23 @@ export default function ForecastChart({ data, peakHour }) {
         </ComposedChart>
       </ResponsiveContainer>
 
-      {/* Legend */}
       <div className="flex items-center justify-center gap-6 mt-3">
-        <div className="flex items-center gap-1.5">
-          <div className="w-3 h-[2px] bg-[#f59e0b] rounded-full"></div>
-          <span className="text-[10px] text-[var(--text-muted)]">Generation (kWh)</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-3 h-[2px] bg-[rgba(99,179,237,0.5)] rounded-full"></div>
-          <span className="text-[10px] text-[var(--text-muted)]">Irradiance (W/m²)</span>
-        </div>
+        <LegendItem color="bg-[#f59e0b]" label="Generation (kWh)" />
+        <LegendItem color="bg-[rgba(99,179,237,0.5)]" label="Irradiance (W/m2)" />
         <div className="flex items-center gap-1.5">
           <div className="w-2.5 h-2.5 rounded-full bg-[#f59e0b] border-2 border-[#060b18]"></div>
           <span className="text-[10px] text-[var(--text-muted)]">Peak Hour</span>
         </div>
       </div>
+    </div>
+  );
+}
+
+function LegendItem({ color, label }) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <div className={`w-3 h-[2px] rounded-full ${color}`}></div>
+      <span className="text-[10px] text-[var(--text-muted)]">{label}</span>
     </div>
   );
 }

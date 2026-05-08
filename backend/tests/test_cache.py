@@ -8,9 +8,18 @@ from cache import TTLCache, build_forecast_cache_key
 
 class CacheTests(unittest.TestCase):
     def test_cache_key_rounds_equivalent_requests(self):
-        key_a = build_forecast_cache_key(28.6139123, 77.2090234, 10.0001, None, 180.004, 14.0, 18.0)
-        key_b = build_forecast_cache_key(28.6139499, 77.2090499, 10.0002, None, 180.003, 14.0, 18.0)
+        key_a = build_forecast_cache_key(
+            28.6139123, 77.2090234, 10.0001, None, 180.004, 14.0, 18.0, 24
+        )
+        key_b = build_forecast_cache_key(
+            28.6139499, 77.2090499, 10.0002, None, 180.003, 14.0, 18.0, 24
+        )
         self.assertEqual(key_a, key_b)
+
+    def test_cache_key_changes_with_forecast_horizon(self):
+        key_a = build_forecast_cache_key(28.6139, 77.2090, 10, None, 180, 14, 18, 24)
+        key_b = build_forecast_cache_key(28.6139, 77.2090, 10, None, 180, 14, 18, 72)
+        self.assertNotEqual(key_a, key_b)
 
     def test_ttl_cache_expires_values(self):
         cache = TTLCache(ttl_seconds=1, max_entries=2)

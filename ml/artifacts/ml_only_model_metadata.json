@@ -1,0 +1,31 @@
+{
+  "forecast_mode": "ml_only_cold_start",
+  "model_family": "hist_gradient_boosting",
+  "dataset": "Kaggle Solar Power Generation Data",
+  "dataset_slug": "anikannal/solar-power-generation-data",
+  "dataset_target_column": "plant_1_plant_ac_power",
+  "plant": "plant_1",
+  "latitude": 14.8141,
+  "longitude": 78.1984,
+  "timezone": "Asia/Kolkata",
+  "feature_columns": [
+    "temperature_2m",
+    "cloud_cover",
+    "shortwave_radiation",
+    "direct_radiation",
+    "diffuse_radiation",
+    "hour",
+    "minute",
+    "dayofweek",
+    "month",
+    "dayofyear",
+    "is_weekend",
+    "sin_hour",
+    "cos_hour",
+    "sin_dayofyear",
+    "cos_dayofyear"
+  ],
+  "reference_system_size_kw": 27595.01,
+  "report_path": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\SolarCast\\ML forecast\\ml\\artifacts\\indian_solar_training_report.json",
+  "model_artifact_path": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\SolarCast\\ML forecast\\ml\\artifacts\\ml_only_model.pkl"
+}

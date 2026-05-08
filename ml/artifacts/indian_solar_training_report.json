@@ -1,0 +1,161 @@
+{
+  "dataset": "Kaggle Solar Power Generation Data",
+  "dataset_slug": "anikannal/solar-power-generation-data",
+  "plant": "plant_1",
+  "aggregation": "plant",
+  "latitude": 14.8141,
+  "longitude": 78.1984,
+  "timezone": "Asia/Kolkata",
+  "location_note": "Approximate Gandikotta, Andhra Pradesh region from public dataset literature.",
+  "target": "15-minute AC energy computed as AC_POWER * 0.25",
+  "target_is_interval_energy": true,
+  "target_note": "target_kwh is AC_POWER converted to 15-minute energy using AC_POWER * 0.25",
+  "total_rows": 3157,
+  "feature_sets": {
+    "cold_start_weather_time": {
+      "feature_count": 15,
+      "feature_columns": [
+        "temperature_2m",
+        "cloud_cover",
+        "shortwave_radiation",
+        "direct_radiation",
+        "diffuse_radiation",
+        "hour",
+        "minute",
+        "dayofweek",
+        "month",
+        "dayofyear",
+        "is_weekend",
+        "sin_hour",
+        "cos_hour",
+        "sin_dayofyear",
+        "cos_dayofyear"
+      ],
+      "num_rows_train": 2209,
+      "num_rows_validation": 474,
+      "num_rows_test": 474,
+      "models": {
+        "ridge": {
+          "validation_metrics": {
+            "mae": 99.35468372847001,
+            "rmse": 157.87054394882185,
+            "daily_energy_mae": 3626.7175542678424
+          },
+          "test_metrics": {
+            "mae": 100.09985568695794,
+            "rmse": 177.36703320968252,
+            "daily_energy_mae": 4970.413157996858
+          }
+        },
+        "hist_gradient_boosting": {
+          "validation_metrics": {
+            "mae": 76.8168828795214,
+            "rmse": 163.0692680603525,
+            "daily_energy_mae": 4178.356590201974
+          },
+          "test_metrics": {
+            "mae": 81.47187568653055,
+            "rmse": 180.20507874967143,
+            "daily_energy_mae": 4204.7675609849075
+          }
+        },
+        "random_forest": {
+          "validation_metrics": {
+            "mae": 77.29355275260953,
+            "rmse": 159.35837431228956,
+            "daily_energy_mae": 3774.665098892868
+          },
+          "test_metrics": {
+            "mae": 82.54267446801411,
+            "rmse": 181.815888822223,
+            "daily_energy_mae": 4600.615828718527
+          }
+        }
+      },
+      "best_model_by_test_daily_energy_mae": "hist_gradient_boosting",
+      "includes_target_history": false
+    },
+    "adaptive_with_lags": {
+      "feature_count": 21,
+      "feature_columns": [
+        "temperature_2m",
+        "cloud_cover",
+        "shortwave_radiation",
+        "direct_radiation",
+        "diffuse_radiation",
+        "hour",
+        "minute",
+        "dayofweek",
+        "month",
+        "dayofyear",
+        "is_weekend",
+        "sin_hour",
+        "cos_hour",
+        "sin_dayofyear",
+        "cos_dayofyear",
+        "lag_1",
+        "lag_2",
+        "lag_4",
+        "lag_96",
+        "rolling_mean_4",
+        "rolling_mean_16"
+      ],
+      "num_rows_train": 2142,
+      "num_rows_validation": 459,
+      "num_rows_test": 460,
+      "models": {
+        "ridge": {
+          "validation_metrics": {
+            "mae": 84.08932865136494,
+            "rmse": 144.5680812620434,
+            "daily_energy_mae": 3047.1120283035243
+          },
+          "test_metrics": {
+            "mae": 90.76359899273739,
+            "rmse": 166.38033715625798,
+            "daily_energy_mae": 4410.436430653074
+          }
+        },
+        "hist_gradient_boosting": {
+          "validation_metrics": {
+            "mae": 70.29664768591594,
+            "rmse": 148.1578638444654,
+            "daily_energy_mae": 3948.3119795304838
+          },
+          "test_metrics": {
+            "mae": 80.31961639411809,
+            "rmse": 176.51413601782318,
+            "daily_energy_mae": 4251.945680874376
+          }
+        },
+        "random_forest": {
+          "validation_metrics": {
+            "mae": 72.76060440594222,
+            "rmse": 143.8062508986428,
+            "daily_energy_mae": 3499.9224266049337
+          },
+          "test_metrics": {
+            "mae": 74.66782364346508,
+            "rmse": 161.94646611198507,
+            "daily_energy_mae": 4568.695760284801
+          }
+        }
+      },
+      "persistence_baseline": {
+        "validation_metrics": {
+          "mae": 269.31915655156865,
+          "rmse": 517.6689611866659,
+          "daily_energy_mae": 1387.3842857449986
+        },
+        "test_metrics": {
+          "mae": 313.9489460412609,
+          "rmse": 590.1134729270333,
+          "daily_energy_mae": 0.0
+        }
+      },
+      "best_model_by_test_daily_energy_mae": "hist_gradient_boosting",
+      "includes_target_history": true
+    }
+  },
+  "exported_model_metadata_path": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\SolarCast\\ML forecast\\ml\\artifacts\\ml_only_model_metadata.json"
+}

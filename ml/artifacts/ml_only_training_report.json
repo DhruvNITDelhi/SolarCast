@@ -1,0 +1,37 @@
+{
+  "model_family": "RandomForestRegressor",
+  "forecast_mode": "ml_only_cold_start",
+  "dataset_target_column": "DE_KN_residential3_pv",
+  "feature_columns": [
+    "temperature_2m",
+    "cloud_cover",
+    "shortwave_radiation",
+    "direct_radiation",
+    "diffuse_radiation",
+    "hour",
+    "minute",
+    "dayofweek",
+    "month",
+    "dayofyear",
+    "is_weekend",
+    "sin_hour",
+    "cos_hour",
+    "sin_dayofyear",
+    "cos_dayofyear"
+  ],
+  "feature_count": 15,
+  "reference_system_size_kw": 3.38,
+  "num_rows_train": 63151,
+  "num_rows_validation": 13533,
+  "num_rows_test": 13533,
+  "validation_metrics": {
+    "mae": 0.08319135987234505,
+    "rmse": 0.6000948253268181,
+    "daily_energy_mae": 6.354631344600375
+  },
+  "test_metrics": {
+    "mae": 0.054266669912038976,
+    "rmse": 0.10121139257852085,
+    "daily_energy_mae": 2.6826666653244837
+  }
+}

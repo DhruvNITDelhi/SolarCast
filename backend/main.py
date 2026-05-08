@@ -1,7 +1,9 @@
 """
-SolarCast — FastAPI Backend
+SolarCast - FastAPI Backend
 Hourly solar energy generation forecast API.
 """
+
+import logging
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,8 +18,6 @@ from settings import (
 )
 from solar_engine import generate_forecast
 
-import logging
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("solarcast")
 
@@ -26,13 +26,10 @@ forecast_cache = TTLCache(
     max_entries=get_forecast_cache_max_entries(),
 )
 
-
-# ─── App ──────────────────────────────────────────────────────────────────────
-
 app = FastAPI(
     title="SolarCast API",
-    description="Hourly solar energy generation forecast using real irradiance data and pvlib.",
-    version="1.0.0",
+    description="Solar energy generation forecast using real irradiance data and pvlib.",
+    version="1.1.0",
 )
 
 app.add_middleware(
@@ -45,15 +42,14 @@ app.add_middleware(
 )
 
 
-# ─── Routes ──────────────────────────────────────────────────────────────────
-
 @app.get("/")
 async def root():
     return {
         "message": "SolarCast API is running!",
         "docs_url": "/docs",
-        "health_check": "/health"
+        "health_check": "/health",
     }
+
 
 @app.get("/health")
 async def health():
@@ -62,12 +58,7 @@ async def health():
 
 @app.post("/forecast", response_model=ForecastResponse)
 async def forecast(req: ForecastRequest):
-    """
-    Generate a 24-hour solar energy forecast.
-
-    Fetches real irradiance data from Open-Meteo and uses pvlib
-    for physics-based solar position and power calculations.
-    """
+    """Generate a solar energy forecast for the selected horizon."""
     try:
         cache_key = build_forecast_cache_key(
             lat=req.lat,
@@ -77,17 +68,27 @@ async def forecast(req: ForecastRequest):
             azimuth=req.azimuth,
             losses=req.losses,
             efficiency=req.efficiency,
+            forecast_hours=req.forecast_hours,
         )
         cached_result = forecast_cache.get(cache_key)
         if cached_result is not None:
             logger.info(
-                f"Forecast cache hit: lat={req.lat}, lon={req.lon}, size={req.system_size_kw}kW"
+                "Forecast cache hit: lat=%s, lon=%s, size=%skW, hours=%s",
+                req.lat,
+                req.lon,
+                req.system_size_kw,
+                req.forecast_hours,
             )
             return cached_result
 
         logger.info(
-            f"Forecast request: lat={req.lat}, lon={req.lon}, "
-            f"size={req.system_size_kw}kW, tilt={req.tilt}, azimuth={req.azimuth}"
+            "Forecast request: lat=%s, lon=%s, size=%skW, tilt=%s, azimuth=%s, hours=%s",
+            req.lat,
+            req.lon,
+            req.system_size_kw,
+            req.tilt,
+            req.azimuth,
+            req.forecast_hours,
         )
 
         result = generate_forecast(
@@ -98,23 +99,30 @@ async def forecast(req: ForecastRequest):
             azimuth=req.azimuth,
             losses=req.losses,
             efficiency=req.efficiency,
+            forecast_hours=req.forecast_hours,
         )
 
         logger.info(
-            f"Forecast complete: total={result['total_kwh']}kWh, "
-            f"peak={result['peak_hour']}, confidence={result['confidence']}"
+            "Forecast complete: total=%skWh, peak=%s, confidence=%s",
+            result["total_kwh"],
+            result["peak_hour"],
+            result["confidence"],
         )
 
         forecast_cache.set(cache_key, result)
         return result
 
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        logger.error(f"Forecast error: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Forecast calculation failed: {str(e)}")
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error("Forecast error: %s", exc, exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Forecast calculation failed: {str(exc)}",
+        )
 
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
