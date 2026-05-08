@@ -1,0 +1,2441 @@
+{
+  "physics": {
+    "hourly": [
+      {
+        "hour": "2026-05-08T16:15:00+05:30",
+        "kwh": 0.115,
+        "irradiance": 298.4,
+        "ghi": 333.0,
+        "temperature": 33.1,
+        "cloud_cover": 77.2
+      },
+      {
+        "hour": "2026-05-08T16:30:00+05:30",
+        "kwh": 0.096,
+        "irradiance": 247.9,
+        "ghi": 279.0,
+        "temperature": 32.9,
+        "cloud_cover": 67.5
+      },
+      {
+        "hour": "2026-05-08T16:45:00+05:30",
+        "kwh": 0.078,
+        "irradiance": 201.7,
+        "ghi": 229.0,
+        "temperature": 32.8,
+        "cloud_cover": 57.8
+      },
+      {
+        "hour": "2026-05-08T17:00:00+05:30",
+        "kwh": 0.064,
+        "irradiance": 164.2,
+        "ghi": 188.0,
+        "temperature": 32.6,
+        "cloud_cover": 48.0
+      },
+      {
+        "hour": "2026-05-08T17:15:00+05:30",
+        "kwh": 0.053,
+        "irradiance": 136.7,
+        "ghi": 158.0,
+        "temperature": 32.4,
+        "cloud_cover": 37.8
+      },
+      {
+        "hour": "2026-05-08T17:30:00+05:30",
+        "kwh": 0.045,
+        "irradiance": 116.5,
+        "ghi": 137.0,
+        "temperature": 32.2,
+        "cloud_cover": 27.5
+      },
+      {
+        "hour": "2026-05-08T17:45:00+05:30",
+        "kwh": 0.038,
+        "irradiance": 98.3,
+        "ghi": 119.0,
+        "temperature": 32.1,
+        "cloud_cover": 17.2
+      },
+      {
+        "hour": "2026-05-08T18:00:00+05:30",
+        "kwh": 0.03,
+        "irradiance": 77.5,
+        "ghi": 98.0,
+        "temperature": 31.9,
+        "cloud_cover": 7.0
+      },
+      {
+        "hour": "2026-05-08T18:15:00+05:30",
+        "kwh": 0.022,
+        "irradiance": 55.6,
+        "ghi": 73.0,
+        "temperature": 31.5,
+        "cloud_cover": 5.8
+      },
+      {
+        "hour": "2026-05-08T18:30:00+05:30",
+        "kwh": 0.015,
+        "irradiance": 38.7,
+        "ghi": 48.0,
+        "temperature": 31.2,
+        "cloud_cover": 4.5
+      },
+      {
+        "hour": "2026-05-08T18:45:00+05:30",
+        "kwh": 0.008,
+        "irradiance": 21.5,
+        "ghi": 25.0,
+        "temperature": 30.8,
+        "cloud_cover": 3.2
+      },
+      {
+        "hour": "2026-05-08T19:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 4.8,
+        "ghi": 5.0,
+        "temperature": 30.4,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-08T19:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 30.1,
+        "cloud_cover": 1.5
+      },
+      {
+        "hour": "2026-05-08T19:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-08T19:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.4,
+        "cloud_cover": 0.5
+      },
+      {
+        "hour": "2026-05-08T20:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:45:00+05:30",
+        "kwh": 0.001,
+        "irradiance": 1.9,
+        "ghi": 2.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:00:00+05:30",
+        "kwh": 0.005,
+        "irradiance": 13.8,
+        "ghi": 18.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:15:00+05:30",
+        "kwh": 0.012,
+        "irradiance": 29.8,
+        "ghi": 41.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:30:00+05:30",
+        "kwh": 0.02,
+        "irradiance": 52.6,
+        "ghi": 68.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:45:00+05:30",
+        "kwh": 0.032,
+        "irradiance": 81.7,
+        "ghi": 101.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:00:00+05:30",
+        "kwh": 0.044,
+        "irradiance": 114.9,
+        "ghi": 138.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:15:00+05:30",
+        "kwh": 0.059,
+        "irradiance": 152.8,
+        "ghi": 179.0,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:30:00+05:30",
+        "kwh": 0.075,
+        "irradiance": 193.2,
+        "ghi": 222.0,
+        "temperature": 26.7,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:45:00+05:30",
+        "kwh": 0.092,
+        "irradiance": 238.1,
+        "ghi": 269.0,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:00:00+05:30",
+        "kwh": 0.11,
+        "irradiance": 285.3,
+        "ghi": 317.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:15:00+05:30",
+        "kwh": 0.129,
+        "irradiance": 334.3,
+        "ghi": 366.0,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:30:00+05:30",
+        "kwh": 0.148,
+        "irradiance": 383.2,
+        "ghi": 414.0,
+        "temperature": 28.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:45:00+05:30",
+        "kwh": 0.167,
+        "irradiance": 432.5,
+        "ghi": 462.0,
+        "temperature": 29.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:00:00+05:30",
+        "kwh": 0.186,
+        "irradiance": 480.2,
+        "ghi": 508.0,
+        "temperature": 30.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:15:00+05:30",
+        "kwh": 0.204,
+        "irradiance": 528.1,
+        "ghi": 554.0,
+        "temperature": 30.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:30:00+05:30",
+        "kwh": 0.222,
+        "irradiance": 573.1,
+        "ghi": 597.0,
+        "temperature": 31.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:45:00+05:30",
+        "kwh": 0.238,
+        "irradiance": 615.2,
+        "ghi": 637.0,
+        "temperature": 31.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:00:00+05:30",
+        "kwh": 0.254,
+        "irradiance": 655.2,
+        "ghi": 675.0,
+        "temperature": 32.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:15:00+05:30",
+        "kwh": 0.268,
+        "irradiance": 693.0,
+        "ghi": 711.0,
+        "temperature": 32.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:30:00+05:30",
+        "kwh": 0.281,
+        "irradiance": 726.6,
+        "ghi": 743.0,
+        "temperature": 32.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:45:00+05:30",
+        "kwh": 0.293,
+        "irradiance": 756.9,
+        "ghi": 772.0,
+        "temperature": 33.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:00:00+05:30",
+        "kwh": 0.303,
+        "irradiance": 783.0,
+        "ghi": 797.0,
+        "temperature": 33.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:15:00+05:30",
+        "kwh": 0.311,
+        "irradiance": 804.7,
+        "ghi": 818.0,
+        "temperature": 33.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:30:00+05:30",
+        "kwh": 0.318,
+        "irradiance": 822.0,
+        "ghi": 835.0,
+        "temperature": 34.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:45:00+05:30",
+        "kwh": 0.323,
+        "irradiance": 834.8,
+        "ghi": 848.0,
+        "temperature": 34.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:00:00+05:30",
+        "kwh": 0.327,
+        "irradiance": 844.4,
+        "ghi": 858.0,
+        "temperature": 34.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:15:00+05:30",
+        "kwh": 0.328,
+        "irradiance": 848.5,
+        "ghi": 863.0,
+        "temperature": 34.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-09T12:30:00+05:30",
+        "kwh": 0.329,
+        "irradiance": 850.2,
+        "ghi": 866.0,
+        "temperature": 35.0,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-09T12:45:00+05:30",
+        "kwh": 0.328,
+        "irradiance": 846.6,
+        "ghi": 864.0,
+        "temperature": 35.3,
+        "cloud_cover": 3.0
+      },
+      {
+        "hour": "2026-05-09T13:00:00+05:30",
+        "kwh": 0.324,
+        "irradiance": 837.6,
+        "ghi": 857.0,
+        "temperature": 35.5,
+        "cloud_cover": 4.0
+      },
+      {
+        "hour": "2026-05-09T13:15:00+05:30",
+        "kwh": 0.319,
+        "irradiance": 823.2,
+        "ghi": 845.0,
+        "temperature": 35.7,
+        "cloud_cover": 5.2
+      },
+      {
+        "hour": "2026-05-09T13:30:00+05:30",
+        "kwh": 0.311,
+        "irradiance": 802.6,
+        "ghi": 827.0,
+        "temperature": 35.8,
+        "cloud_cover": 6.5
+      },
+      {
+        "hour": "2026-05-09T13:45:00+05:30",
+        "kwh": 0.301,
+        "irradiance": 776.8,
+        "ghi": 804.0,
+        "temperature": 36.0,
+        "cloud_cover": 7.8
+      },
+      {
+        "hour": "2026-05-09T14:00:00+05:30",
+        "kwh": 0.289,
+        "irradiance": 747.8,
+        "ghi": 778.0,
+        "temperature": 36.2,
+        "cloud_cover": 9.0
+      },
+      {
+        "hour": "2026-05-09T14:15:00+05:30",
+        "kwh": 0.276,
+        "irradiance": 713.8,
+        "ghi": 747.0,
+        "temperature": 36.2,
+        "cloud_cover": 15.0
+      },
+      {
+        "hour": "2026-05-09T14:30:00+05:30",
+        "kwh": 0.262,
+        "irradiance": 676.8,
+        "ghi": 713.0,
+        "temperature": 36.2,
+        "cloud_cover": 21.0
+      },
+      {
+        "hour": "2026-05-09T14:45:00+05:30",
+        "kwh": 0.246,
+        "irradiance": 635.9,
+        "ghi": 675.0,
+        "temperature": 36.3,
+        "cloud_cover": 27.0
+      },
+      {
+        "hour": "2026-05-09T15:00:00+05:30",
+        "kwh": 0.23,
+        "irradiance": 593.1,
+        "ghi": 635.0,
+        "temperature": 36.3,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:15:00+05:30",
+        "kwh": 0.212,
+        "irradiance": 548.6,
+        "ghi": 593.0,
+        "temperature": 36.3,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:30:00+05:30",
+        "kwh": 0.195,
+        "irradiance": 503.3,
+        "ghi": 550.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:45:00+05:30",
+        "kwh": 0.176,
+        "irradiance": 455.5,
+        "ghi": 504.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T16:00:00+05:30",
+        "kwh": 0.158,
+        "irradiance": 407.3,
+        "ghi": 457.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      }
+    ],
+    "daily_summaries": [
+      {
+        "date": "2026-05-08",
+        "total_kwh": 0.56,
+        "peak_kwh": 0.115,
+        "peak_hour": "2026-05-08T16:15:00+05:30"
+      },
+      {
+        "date": "2026-05-09",
+        "total_kwh": 8.71,
+        "peak_kwh": 0.329,
+        "peak_hour": "2026-05-09T12:30:00+05:30"
+      }
+    ],
+    "forecast_hours": 24,
+    "total_kwh": 9.27,
+    "peak_hour": "2026-05-09T12:30:00+05:30",
+    "peak_kwh": 0.329,
+    "confidence": "High",
+    "confidence_score": 84,
+    "confidence_reason": "Conditions look mixed but reasonably stable, so the forecast should be directionally reliable.",
+    "location_info": {
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "timezone": "Asia/Kolkata"
+    },
+    "system_params": {
+      "system_size_kw": 10.0,
+      "tilt": 28.6139,
+      "azimuth": 180.0,
+      "losses": 14.0,
+      "efficiency": 18.0
+    },
+    "sunrise": null,
+    "sunset": null,
+    "smart_window_start": "2026-05-09T11:00:00+05:30",
+    "smart_window_end": "2026-05-09T14:00:00+05:30",
+    "yesterday_kwh": 8.18,
+    "yesterday_potential": 10.9,
+    "yesterday_loss_percent": 25.0,
+    "maintenance_alert": "Perfect clear skies! High ROI window to wash your solar panels today."
+  },
+  "ml_only": {
+    "forecast_mode": "ml_only",
+    "engine_name": "Experimental ML-only cold-start",
+    "engine_notes": "Experimental ML-only cold-start forecast using weather + time features. Predictions are scaled from a reference training system of about 27595.01 kW.",
+    "hourly": [
+      {
+        "hour": "2026-05-08T15:00:00",
+        "kwh": 1.564,
+        "irradiance": 169.9,
+        "ghi": 593.0,
+        "temperature": 34.2,
+        "cloud_cover": 41.0
+      },
+      {
+        "hour": "2026-05-08T15:15:00",
+        "kwh": 1.469,
+        "irradiance": 171.0,
+        "ghi": 534.8,
+        "temperature": 34.0,
+        "cloud_cover": 52.5
+      },
+      {
+        "hour": "2026-05-08T15:30:00",
+        "kwh": 1.258,
+        "irradiance": 171.6,
+        "ghi": 476.5,
+        "temperature": 33.7,
+        "cloud_cover": 64.0
+      },
+      {
+        "hour": "2026-05-08T15:45:00",
+        "kwh": 1.135,
+        "irradiance": 171.5,
+        "ghi": 418.2,
+        "temperature": 33.5,
+        "cloud_cover": 75.5
+      },
+      {
+        "hour": "2026-05-08T16:00:00",
+        "kwh": 0.981,
+        "irradiance": 170.9,
+        "ghi": 360.0,
+        "temperature": 33.2,
+        "cloud_cover": 87.0
+      },
+      {
+        "hour": "2026-05-08T16:15:00",
+        "kwh": 0.86,
+        "irradiance": 157.8,
+        "ghi": 312.8,
+        "temperature": 33.1,
+        "cloud_cover": 77.2
+      },
+      {
+        "hour": "2026-05-08T16:30:00",
+        "kwh": 0.746,
+        "irradiance": 143.9,
+        "ghi": 265.5,
+        "temperature": 32.9,
+        "cloud_cover": 67.5
+      },
+      {
+        "hour": "2026-05-08T16:45:00",
+        "kwh": 0.622,
+        "irradiance": 129.3,
+        "ghi": 218.2,
+        "temperature": 32.8,
+        "cloud_cover": 57.8
+      },
+      {
+        "hour": "2026-05-08T17:00:00",
+        "kwh": 0.466,
+        "irradiance": 114.0,
+        "ghi": 171.0,
+        "temperature": 32.6,
+        "cloud_cover": 48.0
+      },
+      {
+        "hour": "2026-05-08T17:15:00",
+        "kwh": 0.4,
+        "irradiance": 102.0,
+        "ghi": 149.8,
+        "temperature": 32.4,
+        "cloud_cover": 37.8
+      },
+      {
+        "hour": "2026-05-08T17:30:00",
+        "kwh": 0.346,
+        "irradiance": 89.9,
+        "ghi": 128.5,
+        "temperature": 32.2,
+        "cloud_cover": 27.5
+      },
+      {
+        "hour": "2026-05-08T17:45:00",
+        "kwh": 0.27,
+        "irradiance": 77.7,
+        "ghi": 107.2,
+        "temperature": 32.1,
+        "cloud_cover": 17.2
+      },
+      {
+        "hour": "2026-05-08T18:00:00",
+        "kwh": 0.221,
+        "irradiance": 65.3,
+        "ghi": 86.0,
+        "temperature": 31.9,
+        "cloud_cover": 7.0
+      },
+      {
+        "hour": "2026-05-08T18:15:00",
+        "kwh": 0.157,
+        "irradiance": 50.8,
+        "ghi": 66.2,
+        "temperature": 31.5,
+        "cloud_cover": 5.8
+      },
+      {
+        "hour": "2026-05-08T18:30:00",
+        "kwh": 0.119,
+        "irradiance": 36.2,
+        "ghi": 46.5,
+        "temperature": 31.1,
+        "cloud_cover": 4.5
+      },
+      {
+        "hour": "2026-05-08T18:45:00",
+        "kwh": 0.074,
+        "irradiance": 21.5,
+        "ghi": 26.8,
+        "temperature": 30.8,
+        "cloud_cover": 3.2
+      },
+      {
+        "hour": "2026-05-08T19:00:00",
+        "kwh": 0.021,
+        "irradiance": 6.7,
+        "ghi": 7.0,
+        "temperature": 30.4,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-08T19:15:00",
+        "kwh": 0.013,
+        "irradiance": 5.0,
+        "ghi": 5.2,
+        "temperature": 30.1,
+        "cloud_cover": 1.5
+      },
+      {
+        "hour": "2026-05-08T19:30:00",
+        "kwh": 0.013,
+        "irradiance": 3.3,
+        "ghi": 3.5,
+        "temperature": 29.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-08T19:45:00",
+        "kwh": 0.002,
+        "irradiance": 1.7,
+        "ghi": 1.8,
+        "temperature": 29.4,
+        "cloud_cover": 0.5
+      },
+      {
+        "hour": "2026-05-08T20:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:45:00",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:15:00",
+        "kwh": 0.005,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:30:00",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:45:00",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.7,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:00:00",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:30:00",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:45:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:45:00",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:45:00",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:45:00",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:45:00",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:45:00",
+        "kwh": 0.002,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:15:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:30:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:45:00",
+        "kwh": 0.002,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:00:00",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:15:00",
+        "kwh": 0.011,
+        "irradiance": 7.1,
+        "ghi": 7.5,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:30:00",
+        "kwh": 0.04,
+        "irradiance": 14.2,
+        "ghi": 15.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:45:00",
+        "kwh": 0.054,
+        "irradiance": 21.4,
+        "ghi": 22.5,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:00:00",
+        "kwh": 0.068,
+        "irradiance": 28.6,
+        "ghi": 30.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:15:00",
+        "kwh": 0.161,
+        "irradiance": 59.3,
+        "ghi": 62.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:30:00",
+        "kwh": 0.24,
+        "irradiance": 90.1,
+        "ghi": 94.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:45:00",
+        "kwh": 0.331,
+        "irradiance": 121.0,
+        "ghi": 126.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:00:00",
+        "kwh": 0.396,
+        "irradiance": 151.7,
+        "ghi": 158.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:15:00",
+        "kwh": 0.481,
+        "irradiance": 195.4,
+        "ghi": 203.8,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:30:00",
+        "kwh": 0.634,
+        "irradiance": 238.3,
+        "ghi": 249.5,
+        "temperature": 26.7,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:45:00",
+        "kwh": 0.745,
+        "irradiance": 280.1,
+        "ghi": 295.2,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:00:00",
+        "kwh": 0.873,
+        "irradiance": 320.3,
+        "ghi": 341.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:15:00",
+        "kwh": 0.977,
+        "irradiance": 359.6,
+        "ghi": 388.2,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:30:00",
+        "kwh": 1.116,
+        "irradiance": 396.5,
+        "ghi": 435.5,
+        "temperature": 28.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:45:00",
+        "kwh": 1.245,
+        "irradiance": 430.3,
+        "ghi": 482.8,
+        "temperature": 29.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:00:00",
+        "kwh": 1.324,
+        "irradiance": 460.7,
+        "ghi": 530.0,
+        "temperature": 30.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:15:00",
+        "kwh": 1.439,
+        "irradiance": 481.6,
+        "ghi": 570.5,
+        "temperature": 30.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:30:00",
+        "kwh": 1.561,
+        "irradiance": 498.6,
+        "ghi": 611.0,
+        "temperature": 31.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:45:00",
+        "kwh": 1.651,
+        "irradiance": 511.5,
+        "ghi": 651.5,
+        "temperature": 31.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:00:00",
+        "kwh": 1.711,
+        "irradiance": 519.9,
+        "ghi": 692.0,
+        "temperature": 32.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:15:00",
+        "kwh": 1.814,
+        "irradiance": 515.4,
+        "ghi": 720.5,
+        "temperature": 32.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:30:00",
+        "kwh": 1.928,
+        "irradiance": 506.9,
+        "ghi": 749.0,
+        "temperature": 32.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:45:00",
+        "kwh": 2.013,
+        "irradiance": 494.2,
+        "ghi": 777.5,
+        "temperature": 33.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:00:00",
+        "kwh": 2.048,
+        "irradiance": 477.0,
+        "ghi": 806.0,
+        "temperature": 33.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:15:00",
+        "kwh": 2.03,
+        "irradiance": 448.2,
+        "ghi": 819.2,
+        "temperature": 33.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:30:00",
+        "kwh": 2.02,
+        "irradiance": 416.0,
+        "ghi": 832.5,
+        "temperature": 34.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:45:00",
+        "kwh": 2.111,
+        "irradiance": 380.0,
+        "ghi": 845.8,
+        "temperature": 34.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:00:00",
+        "kwh": 2.158,
+        "irradiance": 339.4,
+        "ghi": 859.0,
+        "temperature": 34.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:15:00",
+        "kwh": 2.134,
+        "irradiance": 289.9,
+        "ghi": 856.8,
+        "temperature": 34.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-09T12:30:00",
+        "kwh": 2.178,
+        "irradiance": 234.0,
+        "ghi": 854.5,
+        "temperature": 35.0,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-09T12:45:00",
+        "kwh": 2.192,
+        "irradiance": 165.2,
+        "ghi": 852.2,
+        "temperature": 35.3,
+        "cloud_cover": 3.0
+      },
+      {
+        "hour": "2026-05-09T13:00:00",
+        "kwh": 2.214,
+        "irradiance": 148.9,
+        "ghi": 850.0,
+        "temperature": 35.5,
+        "cloud_cover": 4.0
+      },
+      {
+        "hour": "2026-05-09T13:15:00",
+        "kwh": 2.094,
+        "irradiance": 151.0,
+        "ghi": 827.8,
+        "temperature": 35.7,
+        "cloud_cover": 5.2
+      },
+      {
+        "hour": "2026-05-09T13:30:00",
+        "kwh": 2.085,
+        "irradiance": 153.0,
+        "ghi": 805.5,
+        "temperature": 35.9,
+        "cloud_cover": 6.5
+      },
+      {
+        "hour": "2026-05-09T13:45:00",
+        "kwh": 2.054,
+        "irradiance": 154.9,
+        "ghi": 783.2,
+        "temperature": 36.0,
+        "cloud_cover": 7.8
+      },
+      {
+        "hour": "2026-05-09T14:00:00",
+        "kwh": 1.956,
+        "irradiance": 156.8,
+        "ghi": 761.0,
+        "temperature": 36.2,
+        "cloud_cover": 9.0
+      }
+    ],
+    "daily_summaries": [
+      {
+        "date": "2026-05-08",
+        "total_kwh": 10.75,
+        "peak_kwh": 1.564,
+        "peak_hour": "2026-05-08T15:00:00"
+      },
+      {
+        "date": "2026-05-09",
+        "total_kwh": 48.1,
+        "peak_kwh": 2.214,
+        "peak_hour": "2026-05-09T13:00:00"
+      }
+    ],
+    "forecast_hours": 24,
+    "total_kwh": 58.85,
+    "peak_hour": "2026-05-09T13:00:00",
+    "peak_kwh": 2.214,
+    "confidence": "High",
+    "confidence_score": 84,
+    "confidence_reason": "Conditions look mixed but reasonably stable, so the forecast should be directionally reliable.",
+    "location_info": {
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "timezone": "Asia/Kolkata"
+    },
+    "system_params": {
+      "system_size_kw": 10.0,
+      "tilt": 28.6139,
+      "azimuth": 180.0,
+      "losses": 14.0,
+      "efficiency": 18.0
+    },
+    "sunrise": null,
+    "sunset": null,
+    "smart_window_start": "2026-05-09T12:15:00",
+    "smart_window_end": "2026-05-09T13:00:00",
+    "yesterday_kwh": null,
+    "yesterday_potential": null,
+    "yesterday_loss_percent": null,
+    "maintenance_alert": "ML-only mode is experimental. Use it to study forecast behavior, then benchmark against the physics engine."
+  },
+  "hybrid": {
+    "hourly": [
+      {
+        "hour": "2026-05-08T16:15:00+05:30",
+        "kwh": 0.145,
+        "irradiance": 298.4,
+        "ghi": 333.0,
+        "temperature": 33.1,
+        "cloud_cover": 77.2
+      },
+      {
+        "hour": "2026-05-08T16:30:00+05:30",
+        "kwh": 0.126,
+        "irradiance": 247.9,
+        "ghi": 279.0,
+        "temperature": 32.9,
+        "cloud_cover": 67.5
+      },
+      {
+        "hour": "2026-05-08T16:45:00+05:30",
+        "kwh": 0.108,
+        "irradiance": 201.7,
+        "ghi": 229.0,
+        "temperature": 32.8,
+        "cloud_cover": 57.8
+      },
+      {
+        "hour": "2026-05-08T17:00:00+05:30",
+        "kwh": 0.094,
+        "irradiance": 164.2,
+        "ghi": 188.0,
+        "temperature": 32.6,
+        "cloud_cover": 48.0
+      },
+      {
+        "hour": "2026-05-08T17:15:00+05:30",
+        "kwh": 0.083,
+        "irradiance": 136.7,
+        "ghi": 158.0,
+        "temperature": 32.4,
+        "cloud_cover": 37.8
+      },
+      {
+        "hour": "2026-05-08T17:30:00+05:30",
+        "kwh": 0.075,
+        "irradiance": 116.5,
+        "ghi": 137.0,
+        "temperature": 32.2,
+        "cloud_cover": 27.5
+      },
+      {
+        "hour": "2026-05-08T17:45:00+05:30",
+        "kwh": 0.068,
+        "irradiance": 98.3,
+        "ghi": 119.0,
+        "temperature": 32.1,
+        "cloud_cover": 17.2
+      },
+      {
+        "hour": "2026-05-08T18:00:00+05:30",
+        "kwh": 0.06,
+        "irradiance": 77.5,
+        "ghi": 98.0,
+        "temperature": 31.9,
+        "cloud_cover": 7.0
+      },
+      {
+        "hour": "2026-05-08T18:15:00+05:30",
+        "kwh": 0.052,
+        "irradiance": 55.6,
+        "ghi": 73.0,
+        "temperature": 31.5,
+        "cloud_cover": 5.8
+      },
+      {
+        "hour": "2026-05-08T18:30:00+05:30",
+        "kwh": 0.045,
+        "irradiance": 38.7,
+        "ghi": 48.0,
+        "temperature": 31.2,
+        "cloud_cover": 4.5
+      },
+      {
+        "hour": "2026-05-08T18:45:00+05:30",
+        "kwh": 0.038,
+        "irradiance": 21.5,
+        "ghi": 25.0,
+        "temperature": 30.8,
+        "cloud_cover": 3.2
+      },
+      {
+        "hour": "2026-05-08T19:00:00+05:30",
+        "kwh": 0.013,
+        "irradiance": 4.8,
+        "ghi": 5.0,
+        "temperature": 30.4,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-08T19:15:00+05:30",
+        "kwh": 0.003,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 30.1,
+        "cloud_cover": 1.5
+      },
+      {
+        "hour": "2026-05-08T19:30:00+05:30",
+        "kwh": 0.004,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-08T19:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.4,
+        "cloud_cover": 0.5
+      },
+      {
+        "hour": "2026-05-08T20:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 29.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T20:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:15:00+05:30",
+        "kwh": 0.004,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 28.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T21:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:00:00+05:30",
+        "kwh": 0.002,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:30:00+05:30",
+        "kwh": 0.002,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T22:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 27.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-08T23:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T00:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 26.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T01:45:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T02:45:00+05:30",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 25.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T03:45:00+05:30",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T04:45:00+05:30",
+        "kwh": 0.001,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:00:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:15:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:30:00+05:30",
+        "kwh": 0.0,
+        "irradiance": 0.0,
+        "ghi": 0.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T05:45:00+05:30",
+        "kwh": 0.023,
+        "irradiance": 1.9,
+        "ghi": 2.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:00:00+05:30",
+        "kwh": 0.035,
+        "irradiance": 13.8,
+        "ghi": 18.0,
+        "temperature": 24.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:15:00+05:30",
+        "kwh": 0.042,
+        "irradiance": 29.8,
+        "ghi": 41.0,
+        "temperature": 24.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:30:00+05:30",
+        "kwh": 0.05,
+        "irradiance": 52.6,
+        "ghi": 68.0,
+        "temperature": 24.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T06:45:00+05:30",
+        "kwh": 0.062,
+        "irradiance": 81.7,
+        "ghi": 101.0,
+        "temperature": 25.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:00:00+05:30",
+        "kwh": 0.074,
+        "irradiance": 114.9,
+        "ghi": 138.0,
+        "temperature": 25.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:15:00+05:30",
+        "kwh": 0.089,
+        "irradiance": 152.8,
+        "ghi": 179.0,
+        "temperature": 26.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:30:00+05:30",
+        "kwh": 0.105,
+        "irradiance": 193.2,
+        "ghi": 222.0,
+        "temperature": 26.7,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T07:45:00+05:30",
+        "kwh": 0.122,
+        "irradiance": 238.1,
+        "ghi": 269.0,
+        "temperature": 27.2,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:00:00+05:30",
+        "kwh": 0.14,
+        "irradiance": 285.3,
+        "ghi": 317.0,
+        "temperature": 27.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:15:00+05:30",
+        "kwh": 0.159,
+        "irradiance": 334.3,
+        "ghi": 366.0,
+        "temperature": 28.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:30:00+05:30",
+        "kwh": 0.178,
+        "irradiance": 383.2,
+        "ghi": 414.0,
+        "temperature": 28.9,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T08:45:00+05:30",
+        "kwh": 0.197,
+        "irradiance": 432.5,
+        "ghi": 462.0,
+        "temperature": 29.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:00:00+05:30",
+        "kwh": 0.216,
+        "irradiance": 480.2,
+        "ghi": 508.0,
+        "temperature": 30.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:15:00+05:30",
+        "kwh": 0.234,
+        "irradiance": 528.1,
+        "ghi": 554.0,
+        "temperature": 30.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:30:00+05:30",
+        "kwh": 0.252,
+        "irradiance": 573.1,
+        "ghi": 597.0,
+        "temperature": 31.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T09:45:00+05:30",
+        "kwh": 0.268,
+        "irradiance": 615.2,
+        "ghi": 637.0,
+        "temperature": 31.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:00:00+05:30",
+        "kwh": 0.284,
+        "irradiance": 655.2,
+        "ghi": 675.0,
+        "temperature": 32.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:15:00+05:30",
+        "kwh": 0.3,
+        "irradiance": 693.0,
+        "ghi": 711.0,
+        "temperature": 32.4,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:30:00+05:30",
+        "kwh": 0.315,
+        "irradiance": 726.6,
+        "ghi": 743.0,
+        "temperature": 32.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T10:45:00+05:30",
+        "kwh": 0.328,
+        "irradiance": 756.9,
+        "ghi": 772.0,
+        "temperature": 33.1,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:00:00+05:30",
+        "kwh": 0.339,
+        "irradiance": 783.0,
+        "ghi": 797.0,
+        "temperature": 33.5,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:15:00+05:30",
+        "kwh": 0.348,
+        "irradiance": 804.7,
+        "ghi": 818.0,
+        "temperature": 33.8,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:30:00+05:30",
+        "kwh": 0.356,
+        "irradiance": 822.0,
+        "ghi": 835.0,
+        "temperature": 34.0,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T11:45:00+05:30",
+        "kwh": 0.362,
+        "irradiance": 834.8,
+        "ghi": 848.0,
+        "temperature": 34.3,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:00:00+05:30",
+        "kwh": 0.366,
+        "irradiance": 844.4,
+        "ghi": 858.0,
+        "temperature": 34.6,
+        "cloud_cover": 0.0
+      },
+      {
+        "hour": "2026-05-09T12:15:00+05:30",
+        "kwh": 0.367,
+        "irradiance": 848.5,
+        "ghi": 863.0,
+        "temperature": 34.8,
+        "cloud_cover": 1.0
+      },
+      {
+        "hour": "2026-05-09T12:30:00+05:30",
+        "kwh": 0.368,
+        "irradiance": 850.2,
+        "ghi": 866.0,
+        "temperature": 35.0,
+        "cloud_cover": 2.0
+      },
+      {
+        "hour": "2026-05-09T12:45:00+05:30",
+        "kwh": 0.367,
+        "irradiance": 846.6,
+        "ghi": 864.0,
+        "temperature": 35.3,
+        "cloud_cover": 3.0
+      },
+      {
+        "hour": "2026-05-09T13:00:00+05:30",
+        "kwh": 0.363,
+        "irradiance": 837.6,
+        "ghi": 857.0,
+        "temperature": 35.5,
+        "cloud_cover": 4.0
+      },
+      {
+        "hour": "2026-05-09T13:15:00+05:30",
+        "kwh": 0.357,
+        "irradiance": 823.2,
+        "ghi": 845.0,
+        "temperature": 35.7,
+        "cloud_cover": 5.2
+      },
+      {
+        "hour": "2026-05-09T13:30:00+05:30",
+        "kwh": 0.348,
+        "irradiance": 802.6,
+        "ghi": 827.0,
+        "temperature": 35.8,
+        "cloud_cover": 6.5
+      },
+      {
+        "hour": "2026-05-09T13:45:00+05:30",
+        "kwh": 0.337,
+        "irradiance": 776.8,
+        "ghi": 804.0,
+        "temperature": 36.0,
+        "cloud_cover": 7.8
+      },
+      {
+        "hour": "2026-05-09T14:00:00+05:30",
+        "kwh": 0.324,
+        "irradiance": 747.8,
+        "ghi": 778.0,
+        "temperature": 36.2,
+        "cloud_cover": 9.0
+      },
+      {
+        "hour": "2026-05-09T14:15:00+05:30",
+        "kwh": 0.309,
+        "irradiance": 713.8,
+        "ghi": 747.0,
+        "temperature": 36.2,
+        "cloud_cover": 15.0
+      },
+      {
+        "hour": "2026-05-09T14:30:00+05:30",
+        "kwh": 0.293,
+        "irradiance": 676.8,
+        "ghi": 713.0,
+        "temperature": 36.2,
+        "cloud_cover": 21.0
+      },
+      {
+        "hour": "2026-05-09T14:45:00+05:30",
+        "kwh": 0.276,
+        "irradiance": 635.9,
+        "ghi": 675.0,
+        "temperature": 36.3,
+        "cloud_cover": 27.0
+      },
+      {
+        "hour": "2026-05-09T15:00:00+05:30",
+        "kwh": 0.26,
+        "irradiance": 593.1,
+        "ghi": 635.0,
+        "temperature": 36.3,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:15:00+05:30",
+        "kwh": 0.242,
+        "irradiance": 548.6,
+        "ghi": 593.0,
+        "temperature": 36.3,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:30:00+05:30",
+        "kwh": 0.225,
+        "irradiance": 503.3,
+        "ghi": 550.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T15:45:00+05:30",
+        "kwh": 0.206,
+        "irradiance": 455.5,
+        "ghi": 504.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      },
+      {
+        "hour": "2026-05-09T16:00:00+05:30",
+        "kwh": 0.188,
+        "irradiance": 407.3,
+        "ghi": 457.0,
+        "temperature": 36.2,
+        "cloud_cover": 33.0
+      }
+    ],
+    "daily_summaries": [
+      {
+        "date": "2026-05-08",
+        "total_kwh": 0.56,
+        "peak_kwh": 0.115,
+        "peak_hour": "2026-05-08T16:15:00+05:30"
+      },
+      {
+        "date": "2026-05-09",
+        "total_kwh": 8.71,
+        "peak_kwh": 0.329,
+        "peak_hour": "2026-05-09T12:30:00+05:30"
+      }
+    ],
+    "forecast_hours": 24,
+    "total_kwh": 11.0,
+    "peak_hour": "2026-05-09T12:30:00+05:30",
+    "peak_kwh": 0.368,
+    "confidence": "High",
+    "confidence_score": 84,
+    "confidence_reason": "Conditions look mixed but reasonably stable, so the forecast should be directionally reliable.",
+    "location_info": {
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "timezone": "Asia/Kolkata"
+    },
+    "system_params": {
+      "system_size_kw": 10.0,
+      "tilt": 28.6139,
+      "azimuth": 180.0,
+      "losses": 14.0,
+      "efficiency": 18.0
+    },
+    "sunrise": null,
+    "sunset": null,
+    "smart_window_start": "2026-05-09T11:00:00+05:30",
+    "smart_window_end": "2026-05-09T14:00:00+05:30",
+    "yesterday_kwh": 8.18,
+    "yesterday_potential": 10.9,
+    "yesterday_loss_percent": 25.0,
+    "maintenance_alert": "Hybrid mode is the patent-track engine: physics forecast plus learned residual correction.",
+    "forecast_mode": "hybrid",
+    "engine_name": "Hybrid physics + ML residual correction",
+    "engine_notes": "Physics baseline corrected by an ML residual model trained on Indian solar plant data. Residual target: actual_capacity_factor - physics_capacity_factor."
+  },
+  "comparison": {
+    "total_kwh_delta": 44.93,
+    "total_kwh_delta_percent": 597.87,
+    "peak_kwh_delta": 1.885,
+    "hourly_mae": 0.5106,
+    "compared_intervals": 88,
+    "physics_matched_total_kwh": 7.515,
+    "ml_matched_total_kwh": 52.445
+  },
+  "hybrid_comparison": {
+    "total_kwh_delta": 1.729,
+    "total_kwh_delta_percent": 18.65,
+    "peak_kwh_delta": 0.039,
+    "hourly_mae": 0.018,
+    "compared_intervals": 96,
+    "physics_matched_total_kwh": 9.27,
+    "ml_matched_total_kwh": 10.999
+  }
+}

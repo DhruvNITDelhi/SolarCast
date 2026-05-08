@@ -1,0 +1,4 @@
+engine,total_kwh_24h,peak_kwh_per_15min,peak_hour,confidence,confidence_score
+Physics,9.27,0.329,2026-05-09T12:30:00+05:30,High,84
+Hybrid residual,11.0,0.368,2026-05-09T12:30:00+05:30,High,84
+ML-only cold start,58.85,2.214,2026-05-09T13:00:00,High,84

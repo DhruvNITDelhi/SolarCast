@@ -1,0 +1,3 @@
+comparison,total_kwh_delta,total_kwh_delta_percent,peak_kwh_delta,hourly_mae,compared_intervals,physics_matched_total_kwh,ml_matched_total_kwh
+Physics vs ML-only,44.93,597.87,1.885,0.5106,88,7.515,52.445
+Physics vs Hybrid,1.729,18.65,0.039,0.018,96,9.27,10.999

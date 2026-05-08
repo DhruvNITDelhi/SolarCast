@@ -1,0 +1,101 @@
+{
+  "live_delhi_request": {
+    "lat": 28.6139,
+    "lon": 77.209,
+    "system_size_kw": 10,
+    "losses": 14,
+    "efficiency": 18,
+    "forecast_hours": 24
+  },
+  "engine_summary_rows": [
+    {
+      "engine": "Physics",
+      "total_kwh_24h": 9.27,
+      "peak_kwh_per_15min": 0.329,
+      "peak_hour": "2026-05-09T12:30:00+05:30",
+      "confidence": "High",
+      "confidence_score": 84
+    },
+    {
+      "engine": "Hybrid residual",
+      "total_kwh_24h": 11.0,
+      "peak_kwh_per_15min": 0.368,
+      "peak_hour": "2026-05-09T12:30:00+05:30",
+      "confidence": "High",
+      "confidence_score": 84
+    },
+    {
+      "engine": "ML-only cold start",
+      "total_kwh_24h": 58.85,
+      "peak_kwh_per_15min": 2.214,
+      "peak_hour": "2026-05-09T13:00:00",
+      "confidence": "High",
+      "confidence_score": 84
+    }
+  ],
+  "delta_metrics": [
+    {
+      "comparison": "Physics vs ML-only",
+      "total_kwh_delta": 44.93,
+      "total_kwh_delta_percent": 597.87,
+      "peak_kwh_delta": 1.885,
+      "hourly_mae": 0.5106,
+      "compared_intervals": 88,
+      "physics_matched_total_kwh": 7.515,
+      "ml_matched_total_kwh": 52.445
+    },
+    {
+      "comparison": "Physics vs Hybrid",
+      "total_kwh_delta": 1.729,
+      "total_kwh_delta_percent": 18.65,
+      "peak_kwh_delta": 0.039,
+      "hourly_mae": 0.018,
+      "compared_intervals": 96,
+      "physics_matched_total_kwh": 9.27,
+      "ml_matched_total_kwh": 10.999
+    }
+  ],
+  "ml_only_training": {
+    "model_family": "RandomForestRegressor",
+    "forecast_mode": "ml_only_cold_start",
+    "feature_count": 15,
+    "train_rows": 63151,
+    "validation_rows": 13533,
+    "test_rows": 13533,
+    "test_metrics": {
+      "mae": 0.054266669912038976,
+      "rmse": 0.10121139257852085,
+      "daily_energy_mae": 2.6826666653244837
+    }
+  },
+  "hybrid_training": {
+    "dataset": "Kaggle Solar Power Generation Data",
+    "model_family": "hist_gradient_boosting",
+    "best_model_by_test_daily_energy_mae": "hist_gradient_boosting",
+    "train_rows": 2209,
+    "validation_rows": 474,
+    "test_rows": 474,
+    "hist_gradient_boosting_test_metrics": {
+      "mae": 83.15538458212222,
+      "rmse": 180.1120516328299,
+      "daily_energy_mae": 4388.642995234727
+    }
+  },
+  "feature_set_takeaway": {
+    "cold_start_random_forest_test": {
+      "mae": 0.05391283207855496,
+      "rmse": 0.10053001690585849,
+      "daily_energy_mae": 2.8157765290943995
+    },
+    "adaptive_random_forest_test": {
+      "mae": 0.025104174214089635,
+      "rmse": 0.05643449788095273,
+      "daily_energy_mae": 0.5071140904832618
+    },
+    "persistence_test": {
+      "mae": 0.030169909016943847,
+      "rmse": 0.06274150824037777,
+      "daily_energy_mae": 0.1170425531916227
+    }
+  }
+}
