@@ -1,6 +1,6 @@
 ---
 title: SolarCast API
-emoji: sun
+emoji: ☀️
 colorFrom: yellow
 colorTo: green
 sdk: docker
